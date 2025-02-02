@@ -5,24 +5,27 @@ autoinstall:
     - storage
     - identity
     - keyboard
-  refresh-installer:
-    update: true
-    channel: latest/edge
+  #refresh-installer:
+  #  update: true
+  #  channel: latest/edge
   source:
-    id: ubuntucinnamon-desktop
+    id: ubuntu-desktop
   locale: en_US.UTF-8
+  keyboard:
+    layout: fr
   timezone: Europe/Paris
-  codecs:
-    install: true
-  drivers:
-    install: true
+  #codecs:
+  #  install: true
+  #drivers:
+  #  install: true
   packages:
     - git
     - vim
-    - htop
   kernel:
     package: linux-image-5.13.0-40-generic
   updates: all
   shutdown: reboot
   late-commands:
+    - curtin in-target -- apt-get update
+    - curtin in-target -- apt-get install htop
     - curtin in-target -- wget -O - "http://dumpscript.epitest.eu" | sudo bash –s 
