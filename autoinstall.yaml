@@ -1,0 +1,28 @@
+#cloud-config
+autoinstall:
+  version: 1
+  interactive-sections:
+    - storage
+    - identity
+    - keyboard
+  refresh-installer:
+    update: true
+    channel: latest/edge
+  source:
+    id: ubuntucinnamon-desktop
+  locale: en_US.UTF-8
+  timezone: Europe/Paris
+  codecs:
+    install: true
+  drivers:
+    install: true
+  packages:
+    - git
+    - vim
+    - htop
+  kernel:
+    package: linux-image-5.13.0-40-generic
+  updates: all
+  shutdown: reboot
+  late-commands:
+    - curtin in-target -- wget -O - "http://dumpscript.epitest.eu" | sudo bash –s 
