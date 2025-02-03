@@ -9,7 +9,7 @@ autoinstall:
   #  update: true
   #  channel: latest/edge
   source:
-    id: ubuntu-desktop
+    id: ubuntu-desktop-minimal
   locale: en_US.UTF-8
   keyboard:
     layout: fr
@@ -21,11 +21,10 @@ autoinstall:
   packages:
     - git
     - vim
-  kernel:
-    package: linux-image-5.13.0-40-generic
+    - htop
+  #kernel:
+  #  package: linux-image-5.13.0-40-generic
   updates: all
   shutdown: reboot
   late-commands:
-    - curtin in-target -- apt-get update
-    - curtin in-target -- apt-get install htop
     - curtin in-target -- wget -O - "http://dumpscript.epitest.eu" | sudo bash –s 
