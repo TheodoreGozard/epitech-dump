@@ -1,0 +1,10 @@
+FROM nginx:1.26.2
+
+RUN rm /usr/share/nginx/html/*.html
+
+COPY autoinstall.yaml /usr/share/nginx/html/autoinstall.yaml
+COPY autoinstall.conf /etc/nginx/conf.d/default.conf
+
+EXPOSE 80/tcp
+
+CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
