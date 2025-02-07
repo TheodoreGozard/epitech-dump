@@ -21,7 +21,7 @@ docker run -it -p 8080:80 docker ghcr.io/theodoregozard/nginx-autoinstall:latest
 docker-compose file :
 
 ```yaml
-service:
+services:
     nginx:
         image: docker pull ghcr.io/theodoregozard/nginx-autoinstall:latest
         restart: always
