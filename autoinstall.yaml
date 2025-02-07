@@ -14,8 +14,13 @@ autoinstall:
   keyboard:
     layout: fr
   timezone: Europe/Paris
+  #codecs:
+    #install: true
+  #drivers:
+    #install: true
   packages:
     - git
+    - sudo
   updates: all
   snaps:
     - name: teams-for-linux
@@ -25,4 +30,9 @@ autoinstall:
     - wget -O - "http://dumpscript.epitest.eu" > /target/tmp/dump.sh
     - curtin in-target --target=/target -- chmod +x /tmp/dump.sh
     - curtin in-target --target=/target -- /bin/bash /tmp/dump.sh 
+  user-data:
+    runcmd:
+      - git clone https://github.com/TheodoreGozard/epitech-emacs.git epitech-emacs
+      - sudo -u "#1000" ./epitech-emacs/INSTALL.sh local
+      - rm -rf epitech-emacs
   shutdown: reboot
