@@ -23,7 +23,7 @@ docker-compose file :
 ```yaml
 services:
     nginx:
-        image: docker pull ghcr.io/theodoregozard/nginx-autoinstall:latest
+        image: ghcr.io/theodoregozard/nginx-autoinstall:latest
         restart: always
         ports:
             - 8080:80
