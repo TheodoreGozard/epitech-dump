@@ -6,7 +6,7 @@ on:
 
 jobs:
   build-and-push-arm64:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux, ARM64]
     steps:
       - uses: actions/checkout@v4
 
@@ -23,7 +23,7 @@ jobs:
           docker push ghcr.io/theodoregozard/nginx-autoinstall:arm
 
   build-and-push-amd64:
-    runs-on: [self-hosted, Linux, ARM64]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
