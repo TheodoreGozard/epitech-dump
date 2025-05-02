@@ -3,8 +3,6 @@ name: Docker Image CI
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
   build-and-push-arm64:
@@ -21,11 +19,10 @@ jobs:
 
       - name: Build and Push the Docker image on Github registry
         run: |
-          docker build . --file Dockerfile --tag ghcr.io/theodoregozard/nginx-autoinstall:amd
-          docker tag ghcr.io/theodoregozard/nginx-autoinstall:amd ghcr.io/theodoregozard/nginx-autoinstall:latest
-          docker push ghcr.io/theodoregozard/nginx-autoinstall:amd ghcr.io/theodoregozard/nginx-autoinstall:latest
-  
-  build-and-push-arm64:
+          docker build . --file Dockerfile --tag ghcr.io/theodoregozard/nginx-autoinstall:arm
+          docker push ghcr.io/theodoregozard/nginx-autoinstall:arm
+
+  build-and-push-amd64:
     runs-on: [self-hosted, Linux, ARM64]
     steps:
       - uses: actions/checkout@v4
@@ -39,6 +36,8 @@ jobs:
 
       - name: Build and Push the Docker image on Github registry
         run: |
-          docker build . --file Dockerfile --tag ghcr.io/theodoregozard/nginx-autoinstall:arm
-          docker push ghcr.io/theodoregozard/nginx-autoinstall:arm
+          docker build . --file Dockerfile --tag ghcr.io/theodoregozard/nginx-autoinstall:amd
+          docker tag ghcr.io/theodoregozard/nginx-autoinstall:amd ghcr.io/theodoregozard/nginx-autoinstall:latest
+          docker push ghcr.io/theodoregozard/nginx-autoinstall:amd ghcr.io/theodoregozard/nginx-autoinstall:latest
+
       
