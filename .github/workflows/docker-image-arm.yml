@@ -21,6 +21,6 @@ jobs:
 
       - name: Build and Push the Docker image on Github registry
         run: |
-          docker build . --file Dockerfile --tag ghcr.io/theodoregozard/nginx-autoinstall:latest
-          docker push ghcr.io/theodoregozard/nginx-autoinstall:latest
+          docker build . --file Dockerfile --tag ghcr.io/theodoregozard/nginx-autoinstall:arm
+          docker push ghcr.io/theodoregozard/nginx-autoinstall:arm
       
