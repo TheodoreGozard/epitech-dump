@@ -38,6 +38,7 @@ jobs:
         run: |
           docker build . --file Dockerfile --tag ghcr.io/theodoregozard/nginx-autoinstall:amd
           docker tag ghcr.io/theodoregozard/nginx-autoinstall:amd ghcr.io/theodoregozard/nginx-autoinstall:latest
-          docker push ghcr.io/theodoregozard/nginx-autoinstall:amd ghcr.io/theodoregozard/nginx-autoinstall:latest
+          docker push ghcr.io/theodoregozard/nginx-autoinstall:amd
+          docker push ghcr.io/theodoregozard/nginx-autoinstall:latest
 
       
