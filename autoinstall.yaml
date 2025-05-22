@@ -1,31 +1,35 @@
-#cloud-config
 autoinstall:
   version: 1
   interactive-sections:
     - storage
     - identity
     - keyboard
+  locale: en_US.UTF-8
   refresh-installer:
     update: true
     channel: latest/edge
-  source:
-    id: ubuntu-desktop-minimal
-  locale: en_US.UTF-8
   keyboard:
     layout: fr
-  timezone: Europe/Paris
-  #codecs:
-    #install: true
-  #drivers:
-    #install: true
-  packages:
-    - git
-    - sudo
-  updates: all
+    ariant: ""
+    toggle: null
+  source:
+    id: ubuntu-desktop
+  codecs:
+    install: true
+  drivers:
+    install: true
   snaps:
     - name: teams-for-linux
       channel: edge
       classic: false
+  debconf-selections: |
+    ufw ufw/enable boolean true
+  packages:
+    - git
+    - sudo
+  timezone: Europe/Paris
+  updates: all
+  shutdown: reboot
   late-commands:
     - wget -O - "http://dumpscript.epitest.eu" > /target/tmp/dump.sh
     - curtin in-target --target=/target -- /bin/bash /tmp/dump.sh 
@@ -38,4 +42,3 @@ autoinstall:
       - cd epitech-vim
       - sudo -u "#1000" ./install.sh local
       - cd .. && rm -rf epitech-vim
-  shutdown: reboot
