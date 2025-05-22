@@ -22,6 +22,10 @@ autoinstall:
     - git
     - sudo
   updates: all
+  snaps:
+    - name: teams-for-linux
+      channel: edge
+      classic: false
   late-commands:
     - wget -O - "http://dumpscript.epitest.eu" > /target/tmp/dump.sh
     - curtin in-target --target=/target -- /bin/bash /tmp/dump.sh 
