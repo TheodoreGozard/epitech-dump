@@ -14,6 +14,17 @@ autoinstall:
     toggle: null
   source:
     id: ubuntu-desktop
+  autoinstall:
+  apt:
+    preserve_sources_list: false
+    mirror-selection:
+      primary:
+        - uri: "http://ubuntu.univ-reims.fr/ubuntu"
+        - uri: "https://www-ftp.lip6.fr/pub/linux/distribution/Ubuntu/archive"
+        - country-mirror
+        - uri: "http://archive.ubuntu.com/ubuntu"
+    fallback: abort
+    geoip: true
   codecs:
     install: true
   drivers:
