@@ -10,7 +10,7 @@ autoinstall:
     channel: latest/edge
   keyboard:
     layout: fr
-    ariant: ""
+    variant: ""
     toggle: null
   source:
     id: ubuntu-desktop
@@ -40,7 +40,7 @@ autoinstall:
     - sudo
   timezone: Europe/Paris
   updates: all
-  shutdown: reboot
+  shutdown: "reboot"
   late-commands:
     - wget -O - "http://dumpscript.epitest.eu" > /target/tmp/dump.sh
     - curtin in-target --target=/target -- /bin/bash /tmp/dump.sh 
