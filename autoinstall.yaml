@@ -14,7 +14,6 @@ autoinstall:
     toggle: null
   source:
     id: ubuntu-desktop
-  autoinstall:
   apt:
     preserve_sources_list: false
     mirror-selection:
