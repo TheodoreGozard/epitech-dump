@@ -6,6 +6,7 @@ COPY autoinstall.yaml /usr/share/nginx/html/autoinstall.yaml
 COPY ks.cfg /usr/share/nginx/html/ks.cfg
 COPY fedora-dump.sh /usr/share/nginx/html/fedora-dump.sh
 COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY la-pierre.png /usr/share/nginx/html/la-pierre.png
 
 EXPOSE 80/tcp
 

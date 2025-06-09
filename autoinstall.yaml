@@ -54,3 +54,5 @@ autoinstall:
       - sudo -u "#1000" ./install.sh local
       - cd .. && rm -rf epitech-vim
       - sudo usermod -a -G docker $(getent passwd 1000 | sed 's/:.*//')
+      - curl -o /root/la-pierre.png http://10.68.253.161:8080/la-pierre.png
+      - sudo sed -i '/GRUB_BACKGROUND/c\GRUB_BACKGROUND="/root/la-pierre.png"' /etc/default/grub
