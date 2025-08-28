@@ -54,4 +54,6 @@ autoinstall:
       - sudo -u "#1000" ./install.sh local
       - cd .. && rm -rf epitech-vim
       - sudo usermod -a -G docker $(getent passwd 1000 | sed 's/:.*//')
-      - sudo curl -o /boot/grub/grub-background.png https://dump.sayro.fr/grub-background.png
+      - sudo curl -o /boot/grub/background.png https://dump.sayro.fr/background.png
+      - sudo cp /boot/grub/background.png /usr/share/backgrounds
+      - path/to/your/image.jpggsettings set org.gnome.desktop.background picture-uri file:///usr/share/backgrounds/background.png
