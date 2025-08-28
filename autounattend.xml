@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <unattend xmlns="urn:schemas-microsoft-com:unattend" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State">
-	<!--https://schneegans.de/windows/unattend-generator/?LanguageMode=Interactive&ProcessorArchitecture=amd64&BypassRequirementsCheck=true&BypassNetworkCheck=true&ComputerNameMode=Random&CompactOsMode=Default&TimeZoneMode=Explicit&TimeZone=Romance+Standard+Time&PartitionMode=Interactive&DiskAssertionMode=Skip&WindowsEditionMode=Generic&WindowsEdition=pro&InstallFromMode=Automatic&UserAccountMode=InteractiveLocal&PasswordExpirationMode=Unlimited&LockoutMode=Default&HideFiles=Hidden&TaskbarSearch=Box&TaskbarIconsMode=Default&DisableWidgets=true&DisableBingResults=true&StartTilesMode=Empty&StartPinsMode=Empty&HideEdgeFre=true&DisableEdgeStartupBoost=true&MakeEdgeUninstallable=true&EffectsMode=Default&DesktopIconsMode=Default&WifiMode=Interactive&ExpressSettings=DisableAll&KeysMode=Skip&StickyKeysMode=Default&ColorMode=Default&WallpaperMode=Default&RemoveBingSearch=true&RemoveCopilot=true&RemoveCortana=true&RemoveOneDrive=true&RemoveOneNote=true&RemoveOneSync=true&RemoveSkype=true&RemoveXboxApps=true&WdacMode=Skip-->
+	<!--https://schneegans.de/windows/unattend-generator/?LanguageMode=Interactive&ProcessorArchitecture=amd64&BypassRequirementsCheck=true&BypassNetworkCheck=true&ComputerNameMode=Random&CompactOsMode=Default&TimeZoneMode=Explicit&TimeZone=Romance+Standard+Time&PartitionMode=Interactive&DiskAssertionMode=Skip&WindowsEditionMode=Generic&WindowsEdition=pro&InstallFromMode=Automatic&PEMode=Default&UserAccountMode=InteractiveLocal&PasswordExpirationMode=Unlimited&LockoutMode=Default&HideFiles=Hidden&TaskbarSearch=Box&TaskbarIconsMode=Default&DisableWidgets=true&DisableBingResults=true&StartTilesMode=Default&StartPinsMode=Empty&PreventAutomaticReboot=true&HideEdgeFre=true&DisableEdgeStartupBoost=true&MakeEdgeUninstallable=true&EffectsMode=Default&DesktopIconsMode=Default&StartFoldersMode=Default&WifiMode=Unattended&WifiName=DUMP&WifiAuthentication=WPA3SAE&WifiPassword=DUMP2025&ExpressSettings=DisableAll&LockKeysMode=Skip&StickyKeysMode=Default&ColorMode=Default&WallpaperMode=Script&WallpaperScript=%23+Photo+by+Martin+Damboldt%3A+https%3A%2F%2Fwww.pexels.com%2Fphoto%2Fgray-bridge-and-trees-814499%2F%0D%0A%24url+%3D+%27https%3A%2F%2Fdump.sayro.fr%2Fbackground.png%27%3B%0D%0Areturn+%28+Invoke-WebRequest+-Uri+%24url+-UseBasicParsing+-TimeoutSec+30+%29.Content%3B&LockScreenMode=Default&RemoveBingSearch=true&RemoveCopilot=true&RemoveCortana=true&RemoveInternetExplorer=true&RemoveOneDrive=true&RemoveOneNote=true&RemoveOneSync=true&RemoveSkype=true&RemoveXboxApps=true&WdacMode=Skip-->
 	<settings pass="offlineServicing"></settings>
 	<settings pass="windowsPE">
 		<component name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
@@ -65,7 +65,6 @@
 			<OOBE>
 				<ProtectYourPC>3</ProtectYourPC>
 				<HideEULAPage>true</HideEULAPage>
-				<HideWirelessSetupInOOBE>false</HideWirelessSetupInOOBE>
 				<HideOnlineAccountScreens>true</HideOnlineAccountScreens>
 			</OOBE>
 		</component>
@@ -144,6 +143,7 @@ $logfile = 'C:\Windows\Setup\Scripts\RemovePackages.log';
 		</File>
 		<File path="C:\Windows\Setup\Scripts\RemoveCapabilities.ps1">
 $selectors = @(
+	'Browser.InternetExplorer';
 	'OneCoreUAP.OneSync';
 );
 $getCommand = {
@@ -189,6 +189,94 @@ $logfile = 'C:\Windows\Setup\Scripts\RemoveCapabilities.log';
 	}
 } *&gt;&amp;1 &gt;&gt; $logfile;
 		</File>
+		<File path="C:\Windows\Setup\Scripts\Wifi.xml">
+&lt;WLANProfile xmlns="http://www.microsoft.com/networking/WLAN/profile/v1"&gt;
+	&lt;name&gt;DUMP&lt;/name&gt;
+	&lt;SSIDConfig&gt;
+		&lt;SSID&gt;
+			&lt;hex&gt;44554D50&lt;/hex&gt;
+			&lt;name&gt;DUMP&lt;/name&gt;
+		&lt;/SSID&gt;
+	&lt;/SSIDConfig&gt;
+	&lt;connectionType&gt;ESS&lt;/connectionType&gt;
+	&lt;connectionMode&gt;auto&lt;/connectionMode&gt;
+	&lt;MSM&gt;
+		&lt;security&gt;
+			&lt;authEncryption&gt;
+				&lt;authentication&gt;WPA3SAE&lt;/authentication&gt;
+				&lt;encryption&gt;AES&lt;/encryption&gt;
+				&lt;useOneX&gt;false&lt;/useOneX&gt;
+				&lt;transitionMode xmlns="http://www.microsoft.com/networking/WLAN/profile/v4"&gt;true&lt;/transitionMode&gt;
+			&lt;/authEncryption&gt;
+			&lt;sharedKey&gt;
+				&lt;keyType&gt;passPhrase&lt;/keyType&gt;
+				&lt;protected&gt;false&lt;/protected&gt;
+				&lt;keyMaterial&gt;DUMP2025&lt;/keyMaterial&gt;
+			&lt;/sharedKey&gt;
+		&lt;/security&gt;
+	&lt;/MSM&gt;
+&lt;/WLANProfile&gt;
+		</File>
+		<File path="C:\Windows\Setup\Scripts\MoveActiveHours.vbs">
+HKLM = &amp;H80000002
+key = "SOFTWARE\Microsoft\WindowsUpdate\UX\Settings"
+Set reg = GetObject("winmgmts://./root/default:StdRegProv")
+current = Hour(Now)
+reg.SetDWORDValue HKLM, key, "ActiveHoursStart", ( current + 23 ) Mod 24
+reg.SetDWORDValue HKLM, key, "ActiveHoursEnd", ( current + 11 ) Mod 24
+reg.SetDWORDValue HKLM, key, "SmartActiveHoursState", 2
+		</File>
+		<File path="C:\Windows\Setup\Scripts\MoveActiveHours.xml">
+&lt;Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task"&gt;
+	&lt;Triggers&gt;
+		&lt;BootTrigger&gt;
+			&lt;Repetition&gt;
+				&lt;Interval&gt;PT4H&lt;/Interval&gt;
+				&lt;StopAtDurationEnd&gt;false&lt;/StopAtDurationEnd&gt;
+			&lt;/Repetition&gt;
+			&lt;Enabled&gt;true&lt;/Enabled&gt;
+		&lt;/BootTrigger&gt;
+		&lt;RegistrationTrigger&gt;
+			&lt;Repetition&gt;
+				&lt;Interval&gt;PT4H&lt;/Interval&gt;
+				&lt;StopAtDurationEnd&gt;false&lt;/StopAtDurationEnd&gt;
+			&lt;/Repetition&gt;
+			&lt;Enabled&gt;true&lt;/Enabled&gt;
+		&lt;/RegistrationTrigger&gt;
+	&lt;/Triggers&gt;
+	&lt;Principals&gt;
+		&lt;Principal id="Author"&gt;
+			&lt;UserId&gt;S-1-5-19&lt;/UserId&gt;
+			&lt;RunLevel&gt;LeastPrivilege&lt;/RunLevel&gt;
+		&lt;/Principal&gt;
+	&lt;/Principals&gt;
+	&lt;Settings&gt;
+		&lt;MultipleInstancesPolicy&gt;IgnoreNew&lt;/MultipleInstancesPolicy&gt;
+		&lt;DisallowStartIfOnBatteries&gt;false&lt;/DisallowStartIfOnBatteries&gt;
+		&lt;StopIfGoingOnBatteries&gt;false&lt;/StopIfGoingOnBatteries&gt;
+		&lt;AllowHardTerminate&gt;true&lt;/AllowHardTerminate&gt;
+		&lt;StartWhenAvailable&gt;false&lt;/StartWhenAvailable&gt;
+		&lt;RunOnlyIfNetworkAvailable&gt;false&lt;/RunOnlyIfNetworkAvailable&gt;
+		&lt;IdleSettings&gt;
+			&lt;StopOnIdleEnd&gt;true&lt;/StopOnIdleEnd&gt;
+			&lt;RestartOnIdle&gt;false&lt;/RestartOnIdle&gt;
+		&lt;/IdleSettings&gt;
+		&lt;AllowStartOnDemand&gt;true&lt;/AllowStartOnDemand&gt;
+		&lt;Enabled&gt;true&lt;/Enabled&gt;
+		&lt;Hidden&gt;false&lt;/Hidden&gt;
+		&lt;RunOnlyIfIdle&gt;false&lt;/RunOnlyIfIdle&gt;
+		&lt;WakeToRun&gt;false&lt;/WakeToRun&gt;
+		&lt;ExecutionTimeLimit&gt;PT72H&lt;/ExecutionTimeLimit&gt;
+		&lt;Priority&gt;7&lt;/Priority&gt;
+	&lt;/Settings&gt;
+	&lt;Actions Context="Author"&gt;
+		&lt;Exec&gt;
+			&lt;Command&gt;C:\Windows\System32\wscript.exe&lt;/Command&gt;
+			&lt;Arguments&gt;C:\Windows\Setup\Scripts\MoveActiveHours.vbs&lt;/Arguments&gt;
+		&lt;/Exec&gt;
+	&lt;/Actions&gt;
+&lt;/Task&gt;
+		</File>
 		<File path="C:\Windows\Setup\Scripts\MakeEdgeUninstallable.ps1">
 $ErrorActionPreference = 'Stop';
 &amp; {
@@ -218,15 +306,71 @@ $key = 'Registry::HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start';
 New-Item -Path $key -ItemType 'Directory' -ErrorAction 'SilentlyContinue';
 Set-ItemProperty -LiteralPath $key -Name 'ConfigureStartPins' -Value $json -Type 'String';
 		</File>
-		<File path="C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml">
-&lt;LayoutModificationTemplate Version="1" xmlns="http://schemas.microsoft.com/Start/2014/LayoutModification"&gt;
-	&lt;LayoutOptions StartTileGroupCellWidth="6" /&gt;
-	&lt;DefaultLayoutOverride&gt;
-		&lt;StartLayoutCollection&gt;
-			&lt;StartLayout GroupCellWidth="6" xmlns="http://schemas.microsoft.com/Start/2014/FullDefaultLayout" /&gt;
-		&lt;/StartLayoutCollection&gt;
-	&lt;/DefaultLayoutOverride&gt;
-&lt;/LayoutModificationTemplate&gt;
+		<File path="C:\Windows\Setup\Scripts\GetWallpaper.ps1">
+# Photo by Martin Damboldt: https://www.pexels.com/photo/gray-bridge-and-trees-814499/
+$url = 'https://dump.sayro.fr/background.png';
+return ( Invoke-WebRequest -Uri $url -UseBasicParsing -TimeoutSec 30 ).Content;
+		</File>
+		<File path="C:\Windows\Setup\Scripts\SetWallpaper.ps1">
+Add-Type -TypeDefinition '
+	using System.Drawing;
+	using System.Runtime.InteropServices;
+	
+	public static class WallpaperSetter {
+		[DllImport("user32.dll")]
+		private static extern bool SetSysColors(
+			int cElements, 
+			int[] lpaElements,
+			int[] lpaRgbValues
+		);
+
+		[DllImport("user32.dll")]
+		private static extern bool SystemParametersInfo(
+			uint uiAction,
+			uint uiParam,
+			string pvParam,
+			uint fWinIni
+		);
+
+		public static void SetDesktopBackground(Color color) {
+			SystemParametersInfo(20, 0, "", 0);
+			SetSysColors(1, new int[] { 1 }, new int[] { ColorTranslator.ToWin32(color) });
+		}
+
+		public static void SetDesktopImage(string file) {
+			SystemParametersInfo(20, 0, file, 0);
+		}
+	}
+' -ReferencedAssemblies 'System.Drawing';
+
+function Set-WallpaperColor {
+	param(
+		[string]
+		$HtmlColor
+	);
+
+	$color = [System.Drawing.ColorTranslator]::FromHtml( $HtmlColor );
+	[WallpaperSetter]::SetDesktopBackground( $color );
+	Set-ItemProperty -Path 'Registry::HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Wallpapers' -Name 'BackgroundType' -Type 'DWord' -Value 1 -Force;
+	Set-ItemProperty -Path 'Registry::HKCU\Control Panel\Desktop' -Name 'WallPaper' -Type 'String' -Value '' -Force;
+	Set-ItemProperty -Path 'Registry::HKCU\Control Panel\Colors' -Name 'Background' -Type 'String' -Value "$($color.R) $($color.G) $($color.B)" -Force;
+}
+
+function Set-WallpaperImage {
+	param(
+		[string]
+		$LiteralPath
+	);
+
+	if( $LiteralPath | Test-Path ) {
+		[WallpaperSetter]::SetDesktopImage( $LiteralPath );
+		Set-ItemProperty -Path 'Registry::HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Wallpapers' -Name 'BackgroundType' -Type 'DWord' -Value 0 -Force;
+		Set-ItemProperty -Path 'Registry::HKCU\Control Panel\Desktop' -Name 'WallPaper' -Type 'String' -Value $LiteralPath -Force;
+	} else {
+		"Cannot use '$LiteralPath' as a desktop wallpaper because that file does not exist.";
+	}
+}
+Set-WallpaperImage -LiteralPath 'C:\Windows\Setup\Scripts\Wallpaper';
 		</File>
 		<File path="C:\Windows\Setup\Scripts\Specialize.ps1">
 $scripts = @(
@@ -246,7 +390,20 @@ $scripts = @(
 		Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\RemoveCapabilities.ps1' -Raw | Invoke-Expression;
 	};
 	{
+		netsh.exe wlan add profile filename="C:\Windows\Setup\Scripts\Wifi.xml" user=all;
+	};
+	{
+		netsh.exe wlan connect name="DUMP" ssid="DUMP";
+	};
+	{
 		net.exe accounts /maxpwage:UNLIMITED;
+	};
+	{
+		reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v AUOptions /t REG_DWORD /d 4 /f;
+		reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoRebootWithLoggedOnUsers /t REG_DWORD /d 1 /f;
+	};
+	{
+		Register-ScheduledTask -TaskName 'MoveActiveHours' -Xml $( Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\MoveActiveHours.xml' -Raw );
 	};
 	{
 		reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Dsh" /v AllowNewsAndInterests /t REG_DWORD /d 0 /f;
@@ -263,6 +420,14 @@ $scripts = @(
 	};
 	{
 		Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\SetStartPins.ps1' -Raw | Invoke-Expression;
+	};
+	{
+		try {
+		  $bytes = Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\GetWallpaper.ps1' -Raw | Invoke-Expression;
+		  [System.IO.File]::WriteAllBytes( 'C:\Windows\Setup\Scripts\Wallpaper', $bytes );
+		} catch {
+		  $_;
+		}
 	};
 );
 
@@ -293,6 +458,9 @@ $scripts = @(
 	{
 		Get-AppxPackage -Name 'Microsoft.Windows.Ai.Copilot.Provider' | Remove-AppxPackage;
 	};
+	{
+		Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\SetWallpaper.ps1' -Raw | Invoke-Expression;
+	};
 );
 
 &amp; {
@@ -321,6 +489,9 @@ $scripts = @(
 $scripts = @(
 	{
 		reg.exe add "HKU\DefaultUser\Software\Policies\Microsoft\Windows\WindowsCopilot" /v TurnOffWindowsCopilot /t REG_DWORD /d 1 /f;
+	};
+	{
+		reg.exe add "HKU\DefaultUser\Software\Microsoft\Internet Explorer\LowRegistry\Audio\PolicyConfig\PropertyStore" /f;
 	};
 	{
 		Remove-ItemProperty -LiteralPath 'Registry::HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Run' -Name 'OneDriveSetup' -Force -ErrorAction 'Continue';
