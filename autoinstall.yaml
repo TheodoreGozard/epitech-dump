@@ -41,9 +41,11 @@ autoinstall:
   timezone: Europe/Paris
   updates: all
   shutdown: "reboot"
-  # late-commands:
+  late-commands:
     # - wget -O - "http://dumpscript.epitest.eu" > /target/tmp/dump.sh
     # - curtin in-target --target=/target -- /bin/bash /tmp/dump.sh
+    - wget -o "https://dump.sayro.fr/background.png" > /target/boot/grub/background.png
+    - curtin in-target --target=/target -- /bin/bash sed -i '1iGRUB_BACKGROUND=/boot/grub/background.png /etc/default/grub
   user-data:
     runcmd:
       - git clone https://github.com/TheodoreGozard/epitech-emacs.git epitech-emacs
@@ -55,6 +57,6 @@ autoinstall:
       - cd .. && rm -rf epitech-vim
       - sudo usermod -a -G docker $(getent passwd 1000 | sed 's/:.*//')
       - sudo curl -o /boot/grub/background.png https://dump.sayro.fr/background.png
-      - sudo sed -i '1iGRUB_BACKGROUND="/boot/grub/background.png' /etc/default/grub
+      - sudo sed -i '1iGRUB_BACKGROUND=/boot/grub/background.png /etc/default/grub
       - sudo cp /boot/grub/background.png /usr/share/backgrounds
       - gsettings set org.gnome.desktop.background picture-uri file:///usr/share/backgrounds/background.png
