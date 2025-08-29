@@ -45,8 +45,8 @@ autoinstall:
     # - wget -O - "http://dumpscript.epitest.eu" > /target/tmp/dump.sh
     # - curtin in-target --target=/target -- /bin/bash /tmp/dump.sh
     - wget -O - "https://dump.sayro.fr/background.png" > /target/boot/grub/background.png
-    - curtin in-target --target=/target -- /bin/bash sed -i '1iGRUB_BACKGROUND=/boot/grub/background.png /etc/default/grub
-    - curtin in-target --target=/target -- /bin/bash update-grub
+    - curtin in-target --target=/target -- sed -i '1iGRUB_BACKGROUND=/boot/grub/background.png /etc/default/grub
+    - curtin in-target --target=/target -- update-grub
   user-data:
     runcmd:
       - git clone https://github.com/TheodoreGozard/epitech-emacs.git epitech-emacs
