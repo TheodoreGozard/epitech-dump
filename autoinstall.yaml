@@ -41,7 +41,7 @@ autoinstall:
   timezone: Europe/Paris
   updates: all
   shutdown: reboot
-  late-commands:
+  # late-commands:
     # - wget -O - "http://dumpscript.epitest.eu" > /target/tmp/dump.sh
     # - curtin in-target --target=/target -- /bin/bash /tmp/dump.sh
   user-data:
