@@ -40,7 +40,7 @@ autoinstall:
     - sudo
   timezone: Europe/Paris
   updates: all
-  shutdown: reboot
+  shutdown: "reboot"
   # late-commands:
     # - wget -O - "http://dumpscript.epitest.eu" > /target/tmp/dump.sh
     # - curtin in-target --target=/target -- /bin/bash /tmp/dump.sh
@@ -58,4 +58,4 @@ autoinstall:
       - sudo sed -i '/GRUB_BACKGROUND/c\GRUB_BACKGROUND="/boot/grub/background.png"' /etc/default/grub
       - sudo cp /boot/grub/background.png /usr/share/backgrounds
       - sudo update-grub
-      - gsettings set org.gnome.desktop.background picture-uri file:///usr/share/backgrounds/background.png
+      - sudo gsettings set org.gnome.desktop.background picture-uri file:///usr/share/backgrounds/background.png
