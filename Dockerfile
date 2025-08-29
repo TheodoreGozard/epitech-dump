@@ -7,6 +7,7 @@ COPY ks.cfg /usr/share/nginx/html/ks.cfg
 COPY fedora-dump.sh /usr/share/nginx/html/fedora-dump.sh
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY background.png /usr/share/nginx/html/background.png
+COPY grub /usr/share/nginx/html/grub
 
 EXPOSE 80/tcp
 
