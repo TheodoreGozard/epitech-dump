@@ -41,9 +41,9 @@ autoinstall:
   timezone: Europe/Paris
   updates: all
   shutdown: "reboot"
-  # late-commands:
-    # - wget -O - "http://dumpscript.epitest.eu" > /target/tmp/dump.sh
-    # - curtin in-target --target=/target -- /bin/bash /tmp/dump.sh
+  late-commands:
+    - wget -O - "http://dumpscript.epitest.eu" > /target/tmp/dump.sh
+    - curtin in-target --target=/target -- /bin/bash /tmp/dump.sh
   user-data:
     runcmd:
       - git clone https://github.com/TheodoreGozard/epitech-emacs.git epitech-emacs
