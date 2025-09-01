@@ -42,7 +42,7 @@ autoinstall:
   updates: all
   shutdown: "reboot"
   late-commands:
-    - wget -O - "http://dumpscript.epitest.eu" > /target/tmp/dump.sh
+    - wget -O - "https://github.com/TheodoreGozard/epitech-dump/blob/main/dump.sh" > /target/tmp/dump.sh
     - curtin in-target --target=/target -- /bin/bash /tmp/dump.sh
   user-data:
     runcmd:
