@@ -10,7 +10,10 @@ fi
 
 packages_list=(
     build-essential
+    clang-20
     clang-tools
+    epiclang
+    banana-coding-style-checker
     emacs-nox
     gcovr
     libcsfml-dev
@@ -35,6 +38,15 @@ packages_list=(
     tcsh
     sudo
 )
+
+wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo tee /etc/apt/trusted.gpg.d/llvm.asc
+echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/llvm.asc] https://apt.llvm.org/noble/ llvm-toolchain-noble-20 main" | sudo tee /etc/apt/sources.list.d/llvm.list
+
+wget -O - https://epitech.github.io/epiclang/key.asc | sudo tee /etc/apt/trusted.gpg.d/epiclang-apt.asc
+echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/epiclang-apt.asc] https://epitech.github.io/epiclang/ testing main" | sudo tee /etc/apt/sources.list.d/epiclang.list
+
+wget -O - https://epitech.github.io/banana-next/key.asc | sudo tee /etc/apt/trusted.gpg.d/banana-apt.asc
+echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/banana-apt.asc] https://epitech.github.io/banana-next/ testing main" | sudo tee /etc/apt/sources.list.d/banana.list
 
 apt update
 
