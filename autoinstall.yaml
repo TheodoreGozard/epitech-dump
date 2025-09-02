@@ -58,4 +58,4 @@ autoinstall:
       - curl -o /etc/default/grub https://dump.sayro.fr/grub
       - sudo update-grub
       - sudo cp /boot/grub/background.png /usr/share/backgrounds
-      - [gsettings, set, org.gnome.desktop.background, picture-uri, file:///usr/share/backgrounds/background.png]
+      - sudo -u "#1000" echo 'gsettings set org.gnome.desktop.background picture-uri file:///usr/share/backgrounds/background.png' >> ~/.bashrc 
