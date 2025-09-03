@@ -44,3 +44,12 @@ autoinstall:
   late-commands:
     - wget -O - "https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/dump.sh" > /target/tmp/dump.sh
     - curtin in-target --target=/target -- /bin/bash /tmp/dump.sh
+  user-data:
+    runcmd:
+      - git clone https://github.com/TheodoreGozard/epitech-emacs.git epitech-emacs
+      - sudo -u "#1000" ./epitech-emacs/INSTALL.sh local
+      - rm -rf epitech-emacs
+      - git clone https://github.com/Epitech/vim-epitech.git epitech-vim
+      - cd epitech-vim
+      - sudo -u "#1000" ./install.sh local
+      - cd .. && rm -rf epitech-vim
