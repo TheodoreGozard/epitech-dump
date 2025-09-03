@@ -71,7 +71,7 @@ curl -o /boot/grub/background.png https://dump.sayro.fr/background.png
 curl -o /etc/default/grub https://dump.sayro.fr/grub
 update-grub
 cp /boot/grub/background.png /usr/share/backgrounds
-echo "user-db:user\nsystem-db:local" > /etc/dconf/profile/user
+echo -e "user-db:user\nsystem-db:local" > /etc/dconf/profile/user
 mkdir /etc/dconf/db/local.d/
 curl -o /etc/dconf/db/local.d/00-background https://dump.sayro.fr/00-background
 dconf update
