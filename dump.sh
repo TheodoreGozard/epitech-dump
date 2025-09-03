@@ -37,6 +37,7 @@ packages_list=(
     net-tools
     tcsh
     sudo
+    git
 )
 
 wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo tee /etc/apt/trusted.gpg.d/llvm.asc
@@ -58,3 +59,20 @@ cp -r criterion-2.4.2/* /usr/local/
 echo "/usr/local/lib" > /etc/ld.so.conf.d/usr-local.conf
 ldconfig
 rm -rf criterion-2.4.2.tar.xz criterion-2.4.2/
+
+git clone https://github.com/TheodoreGozard/epitech-emacs.git epitech-emacs
+sudo -u "#1000" ./epitech-emacs/INSTALL.sh local
+rm -rf epitech-emacs
+git clone https://github.com/Epitech/vim-epitech.git epitech-vim
+cd epitech-vim
+sudo -u "#1000" ./install.sh local
+cd .. && rm -rf epitech-vim
+curl -o /boot/grub/background.png https://dump.sayro.fr/background.png
+curl -o /etc/default/grub https://dump.sayro.fr/grub
+update-grub
+cp /boot/grub/background.png /usr/share/backgrounds
+echo "user-db:user\nsystem-db:local" > /etc/dconf/profile/user
+mkdir /etc/dconf/db/local.d/
+curl -o /etc/dconf/db/local.d/00-background https://dump.sayro.fr/00-background
+dconf update
+snap install teams-for-linux
