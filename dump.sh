@@ -76,3 +76,4 @@ mkdir /etc/dconf/db/local.d/
 curl -o /etc/dconf/db/local.d/00-background https://dump.sayro.fr/00-background
 dconf update
 snap install teams-for-linux
+apt upgrade
