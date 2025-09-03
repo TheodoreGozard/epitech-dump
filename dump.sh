@@ -74,6 +74,6 @@ cp /boot/grub/background.png /usr/share/backgrounds
 echo -e "user-db:user\nsystem-db:local" > /etc/dconf/profile/user
 mkdir /etc/dconf/db/local.d/
 curl -o /etc/dconf/db/local.d/00-background https://dump.sayro.fr/00-background
-# dconf update
+dconf update
 snap install teams-for-linux
-apt upgrade
+apt upgrade -y

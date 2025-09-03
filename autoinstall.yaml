@@ -29,6 +29,10 @@ autoinstall:
     install: true
   drivers:
     install: true
+  snaps:
+    - name: teams-for-linux
+      channel: edge
+      classic: false
   debconf-selections: |
     ufw ufw/enable boolean true
   packages:
