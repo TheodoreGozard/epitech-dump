@@ -10,6 +10,7 @@ COPY background.png /usr/share/nginx/html/background.png
 COPY grub /usr/share/nginx/html/grub
 COPY 00-background /usr/share/nginx/html/00-background
 COPY dump-doc.pdf /usr/share/nginx/html/dump-doc.pdf
+COPY dump.sh /usr/share/nginx/html/dump.sh
 
 EXPOSE 80/tcp
 
