@@ -63,17 +63,22 @@ rm -rf criterion-2.4.2.tar.xz criterion-2.4.2/
 git clone https://github.com/TheodoreGozard/epitech-emacs.git epitech-emacs
 sudo -u "#1000" ./epitech-emacs/INSTALL.sh local
 rm -rf epitech-emacs
+
 git clone https://github.com/Epitech/vim-epitech.git epitech-vim
 cd epitech-vim
 sudo -u "#1000" ./install.sh local
 cd .. && rm -rf epitech-vim
-curl -o /boot/grub/background.png https://dump.sayro.fr/background.png
-curl -o /etc/default/grub https://dump.sayro.fr/grub
+
+snap install teams-for-linux
+
+curl -o /boot/grub/background.png https://github.com/TheodoreGozard/epitech-dump/blob/main/background.png
+curl -o /etc/default/grub https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/grub
 update-grub
+
 cp /boot/grub/background.png /usr/share/backgrounds
 echo -e "user-db:user\nsystem-db:local" > /etc/dconf/profile/user
 mkdir /etc/dconf/db/local.d/
-curl -o /etc/dconf/db/local.d/00-background https://dump.sayro.fr/00-background
+curl -o /etc/dconf/db/local.d/00-background https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/00-background
 dconf update
-snap install teams-for-linux
+
 apt upgrade -y
