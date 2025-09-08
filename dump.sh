@@ -71,7 +71,7 @@ cd .. && rm -rf epitech-vim
 
 snap install teams-for-linux
 
-curl -o /boot/grub/background.png https://github.com/TheodoreGozard/epitech-dump/blob/main/background.png
+curl -o /boot/grub/background.png https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/background.png
 curl -o /etc/default/grub https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/grub
 update-grub
 
