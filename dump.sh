@@ -3,6 +3,8 @@
 clear
 
 echo "INSTALLING TOOLS AND PACKAGES FOR EPITECH'S DUMP"
+echo "THIS SCRIPT IS SUPPOSSE TO RUN ON UBUNTU 24.04, IT MAY NOT WORK ON OTHER DISTRO"
+
 if [[ $EUID -ne 0 ]]; then
    echo "This script must be run as root" 1>&2
    exit 1
@@ -63,12 +65,12 @@ rm -rf criterion-2.4.2.tar.xz criterion-2.4.2/
 
 git clone https://github.com/Epitech/epitech-emacs.git
 cd epitech-emacs
-sudo -u "#1000" ./INSTALL.sh local
+bash INSTALL.sh system
 cd .. && rm -rf epitech-emacs
 
 git clone https://github.com/Epitech/vim-epitech.git epitech-vim
 cd epitech-vim
-sudo -u "#1000" ./install.sh local
+bash install.sh system
 cd .. && rm -rf epitech-vim
 
 snap install teams-for-linux

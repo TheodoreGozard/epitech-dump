@@ -38,6 +38,7 @@ autoinstall:
   packages:
     - git
     - sudo
+    - curl
   timezone: Europe/Paris
   updates: all
   shutdown: "reboot"
@@ -48,9 +49,9 @@ autoinstall:
     runcmd:
       - git clone https://github.com/Epitech/epitech-emacs.git
       - cd epitech-emacs
-      - sudo -u "#1000" ./INSTALL.sh local
+      - bash INSTALL.sh system
       - cd .. && rm -rf epitech-emacs
-      - git clone https://github.com/Epitech/vim-epitech.git epitech-vim
-      - cd epitech-vim
-      - sudo -u "#1000" ./install.sh local
-      - cd .. && rm -rf epitech-vim
+      - git clone https://github.com/Epitech/vim-epitech.git
+      - cd vim-epitech
+      - bash install.sh system
+      - cd .. && rm -rf vim-epitech
