@@ -50,7 +50,7 @@ echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/banana-apt.asc] https://e
 
 apt update
 
-apt install -y build-essential curl
+apt install -y build-essential curl libllvm20
 
 apt install -y ${packages_list[@]}
 
