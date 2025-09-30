@@ -14,6 +14,7 @@ packages_list=(
     make
     gcc
     gcc-c++
+    epiclang
     kernel-devel
     clang
     emacs-nox
@@ -44,6 +45,8 @@ packages_list=(
     glibc-devel
     glibc-locale-source
 )
+
+curl https://rpm.intrastek.tech/epiclang.repo -o /etc/yum.repos.d/epiclang.repo
 
 dnf update
 
