@@ -11,11 +11,15 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 packages_list=(
+    make
+    gcc
+    gcc-c++
+    kernel-devel
     clang
     emacs-nox
     gcovr
     CSFML
-    CSMLF-doc
+    CSFML-doc
     CSFML-devel
     libjpeg-turbo-devel
     libX11-devel
@@ -43,7 +47,7 @@ packages_list=(
 
 dnf update
 
-dnf install -y make gcc gcc-c++ kernel-devel curl
+dnf install -y  curl tar
 
 dnf install -y ${packages_list[@]}
 
