@@ -1,53 +1,105 @@
-#!/usr/bin/env bash
-# This script ensures that epiclang is run with at least Python 3.11
+#! /usr/bin/env python3
 
-MIN_PYTHON_MAJOR=3
-MIN_PYTHON_MINOR=11
+import os
+import re
+import sys
+import glob
+import subprocess
+import tomllib
+from typing import Any
 
-PYTHON_VERSIONS=(python3.15 python3.14 python3.13 python3.12 python3.11)
-GENERIC_PYTHONS=(python3 python)
+EPICLANG_DOTFILE = '.epiclang'
+EPICLANG_PLUGINS_DIRS = [
+    '/usr/lib/epiclang/plugins',
+    '/usr/local/lib/epiclang/plugins',
+]
+BASE_COMMAND = 'clang-20'
 
-is_minimum_python_version() {
-    local cmd="$1"
-    local version
-    local major
-    local minor
 
-    version=$("$cmd" -c 'import sys; print(f"{sys.version_info[0]}.{sys.version_info[1]}")' 2>/dev/null) || return 1
-    major=${version%%.*}
-    minor=${version#*.}
+class EpiclangConfig:
 
-    if [ "$major" -gt "$MIN_PYTHON_MAJOR" ]; then
-        return 0
-    fi
+    def __init__(self, toml_config: dict[str, Any]):
+        self.plugins_config: dict[str, dict[str, str]] = {}
+        if 'plugins' in toml_config:
+            for plugin, config in toml_config['plugins'].items():
+                if type(config) != dict:
+                    raise ValueError(f'{plugin} is not a table')
+                self.plugins_config[plugin] = {}
+                for key, value in config.items():
+                    if type(value) != str:
+                        raise ValueError(
+                            f'{plugin}.{key} value must be a string')
+                    self.plugins_config[plugin][key] = value
 
-    if [ "$major" -eq "$MIN_PYTHON_MAJOR" ] && [ "$minor" -ge "$MIN_PYTHON_MINOR" ]; then
-        return 0
-    fi
+    def get_config_for_plugin(self, plugin: str) -> dict[str, str] | None:
+        return self.plugins_config.get(plugin)
 
-    return 1
-}
 
-PYTHON_CMD=""
-for version in "${PYTHON_VERSIONS[@]}"; do
-    if command -v "$version" >/dev/null 2>&1; then
-        PYTHON_CMD="$version"
-        break
-    fi
-done
-
-if [ -z "$PYTHON_CMD" ]; then
-    for generic in "${GENERIC_PYTHONS[@]}"; do
-        if command -v "$generic" >/dev/null 2>&1 && is_minimum_python_version "$generic"; then
-            PYTHON_CMD="$generic"
+def find_epiclang_dotfile() -> str | None:
+    current_dir = os.getcwd()
+    while True:
+        if os.path.exists(os.path.join(current_dir, EPICLANG_DOTFILE)):
+            return os.path.join(current_dir, EPICLANG_DOTFILE)
+        if current_dir == '/':
             break
-        fi
-    done
-fi
+        current_dir = os.path.dirname(current_dir)
+    return None
 
-if [ -z "$PYTHON_CMD" ]; then
-    echo "Error: No suitable Python version found (${PYTHON_VERSIONS[*]} or ${GENERIC_PYTHONS[*]} >= ${MIN_PYTHON_MAJOR}.${MIN_PYTHON_MINOR})" >&2
-    exit 1
-fi
 
-exec "$PYTHON_CMD" "$(dirname "$0")/epiclang.py" "$@"
+def load_epiclang_dotfile() -> EpiclangConfig | None:
+    dotfile_path = find_epiclang_dotfile()
+    if dotfile_path is None:
+        return None
+
+    dotfile_content: EpiclangConfig | None = None
+    try:
+        with open(dotfile_path, 'rb') as dotfile:
+            toml_content = tomllib.load(dotfile)
+            dotfile_content = EpiclangConfig(toml_content)
+    except tomllib.TOMLDecodeError as e:
+        print(
+            f'Error while loading .epiclang, ignoring it: {e}', file=sys.stderr)
+    return dotfile_content
+
+
+PLUGIN_NAME_REGEX = re.compile(r'.*/\w+-plugin-(\w+)\.so')
+
+
+def get_plugin_name_from_path(path: str) -> str | None:
+    fm = PLUGIN_NAME_REGEX.fullmatch(path)
+    if not fm:
+        return None
+    return fm.group(1)
+
+
+def main():
+    epiclang_dotfile = load_epiclang_dotfile()
+    final_command = [BASE_COMMAND]
+
+    for plugins_dir in EPICLANG_PLUGINS_DIRS:
+        if os.path.exists(plugins_dir):
+            for plugin in glob.glob(os.path.join(plugins_dir, '*.so')):
+                if os.path.isfile(plugin):
+                    final_command.extend([f'-fplugin={plugin}'])
+                    if epiclang_dotfile:
+                        plugin_name = get_plugin_name_from_path(plugin)
+                        plugin_config = epiclang_dotfile.get_config_for_plugin(
+                            plugin_name)
+                        if plugin_config:
+                            for key, value in plugin_config.items():
+                                final_command.extend(
+                                    [f'-fplugin-arg-{plugin_name}-{key}={value}'])
+
+    final_command.extend(sys.argv[1:])
+
+    try:
+        subprocess.run(final_command, check=True)
+    except subprocess.CalledProcessError as e:
+        sys.exit(e.returncode)
+    except FileNotFoundError:
+        print(f"Error: {BASE_COMMAND} not found in PATH", file=sys.stderr)
+        sys.exit(1)
+
+
+if __name__ == '__main__':
+    main()
