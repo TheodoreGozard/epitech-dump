@@ -27,7 +27,7 @@ run_cmd() {
   chroot $CHROOT $1
 }
 
-ERASE_DISKS=/dev/$1 setup-alpine -e -f http://10.50.50.4:8080/stumper/alpine-answers
+ERASE_DISKS=/dev/$1 setup-alpine -e -f https://dump.epistone.fr/stumper/alpine-answers
 
 mount /dev/$13 $CHROOT
 
