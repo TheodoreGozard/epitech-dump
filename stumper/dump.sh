@@ -31,6 +31,9 @@ ERASE_DISKS=/dev/$1 setup-alpine -e -f https://dump.epistone.fr/stumper/alpine-a
 
 mount /dev/$13 $CHROOT
 
+run_cmd 'wget -O /tmp/setup-wifi.sh "https://dump.epistone.fr/stumper/setup-wifi.sh"'
+run_cmd 'sh /tmp/setup-wifi.sh'
+
 sed -i 's/#/''/g' $CHROOT/etc/apk/repositories
 echo -e "https://alpine-repo.epistone.fr" >> $CHROOT/etc/apk/repositories
 wget -O $CHROOT/etc/apk/keys/stumper-6a3e78e7.rsa.pub https://alpine-repo.epistone.fr/keys/stumper-6a3e78e7.rsa.pub
@@ -54,8 +57,8 @@ echo "stumper ALL= NOPASSWD: /sbin/reboot, /sbin/poweroff, /sbin/apk update" >> 
 
 echo "rm -rf /home/stumper/!(.*)" > $CHROOT/etc/local.d/reset-stumper-home.start
 chmod +x $CHROOT/etc/local.d/reset-stumper-home.start
-echo "apk update" > $CHROOT/etc/local.d/update-apk.start
-chmod +x $CHROOT/etc/local.d/update-apk.start
+#echo "apk update" > $CHROOT/etc/local.d/update-apk.start
+#chmod +x $CHROOT/etc/local.d/update-apk.start
 run_cmd "rc-update add local default"
 
 umount /mnt
