@@ -11,23 +11,23 @@ find_wifi_interface() {
 }
 
 read_password() {
-    local var_name=$1
-    local password=""
-    local char
+    var_name=$1
+    password=""
+    char=""
     
-    echo -n "Enter Epitech password: " >&2
+    printf "Enter Epitech password: " >&2
     
-    while IFS= read -r -s -n1 char; do
-        if [[ $char == $'\0' ]]; then
+    while IFS= read -r -n1 char; do
+        if [ "$char" = "" ]; then
             break
         fi
-        password+="$char"
-        echo -n "*" >&2
+        password="$password$char"
+        printf "*" >&2
     done
-    echo >&2
+    printf "\n" >&2
     
     # Assign to the variable passed by reference
-    printf -v "$var_name" '%s' "$password"
+    eval "$var_name='$password'"
 }
 
 find_wifi_interface
@@ -35,8 +35,7 @@ read -p "Enter Epitech email address: " epitech_email
 read_password epitech_password
 
 touch /etc/wpa_supplicant/wpa_supplicant.conf
-echo 
-"network={
+echo "network={
     ssid="IONIS"
     key_mgmt=WPA-PEAP
     eap=PEAP
@@ -50,8 +49,7 @@ rc-update add wpa_supplicant boot
 rc-update add networking boot
 rc-service wpa_supplicant start
 
-echo
-"
+echo "
 auto "$wifi_interface"
 iface "$wifi_interface" inet dhcp
 " >> /etc/network/interface
