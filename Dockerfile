@@ -15,6 +15,7 @@ COPY ./dump-doc.pdf ./dump-doc.pdf
 COPY ./dump.sh ./dump.sh
 COPY ./stumper/dump.sh ./stumper/dump.sh
 COPY ./stumper/alpine-answers ./stumper/alpine-answers
+COPY ./stumper/setup-wifi.sh ./stumper/setup-wifi.sh
 
 EXPOSE 80/tcp
 
