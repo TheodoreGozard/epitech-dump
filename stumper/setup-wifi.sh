@@ -35,21 +35,22 @@ read -p "Enter Epitech email address: " epitech_email
 read_password epitech_password
 
 touch /etc/wpa_supplicant/wpa_supplicant.conf
-echo "network={
+echo 'network={
     ssid="IONIS"
-    key_mgmt=WPA-PEAP
+    key_mgmt=WPA-EAP
     eap=PEAP
     phase2="auth=MSCHAPV2"
-    identity="$epitech_mail"
-    password="$epitech_password"
-}" > /etc/wpa_supplicant/wpa_supplicant.conf
+    identity=""$epitech_email""
+    password=""$epitech_password""
+}' > /etc/wpa_supplicant/wpa_supplicant.conf
 
+wpa_supplicant -B -i "$wifi_interface" -c /etc/wpa_supplicant/wpa_supplicant.conf
 udhcpc -i "$wifi_interface"
 rc-update add wpa_supplicant boot
 rc-update add networking boot
 rc-service wpa_supplicant start
 
-echo "
+echo '
 auto "$wifi_interface"
 iface "$wifi_interface" inet dhcp
-" >> /etc/network/interface
+' >> /etc/network/interface
