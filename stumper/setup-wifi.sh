@@ -53,6 +53,9 @@ udhcpc -i "$wifi_interface"
 rc-update add wpa_supplicant boot
 rc-update add networking boot
 rc-service wpa_supplicant start
+cat > /etc/conf.d/wpa_cli << EOF
+WPACLI_OPTS="-a /etc/wpa_supplicant/wpa_cli.sh"
+EOF
 
 echo "
 auto $wifi_interface
