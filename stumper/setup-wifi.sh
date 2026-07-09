@@ -40,8 +40,8 @@ echo 'network={
     key_mgmt=WPA-EAP
     eap=PEAP
     phase2="auth=MSCHAPV2"
-    identity=""$epitech_email""
-    password=""$epitech_password""
+    identity=$epitech_email
+    password=$epitech_password
 }' > /etc/wpa_supplicant/wpa_supplicant.conf
 
 wpa_supplicant -B -i "$wifi_interface" -c /etc/wpa_supplicant/wpa_supplicant.conf
@@ -50,7 +50,7 @@ rc-update add wpa_supplicant boot
 rc-update add networking boot
 rc-service wpa_supplicant start
 
-echo '
-auto "$wifi_interface"
-iface "$wifi_interface" inet dhcp
-' >> /etc/network/interface
+echo "
+auto $wifi_interface
+iface $wifi_interface inet dhcp
+" >> /etc/network/interface
