@@ -36,6 +36,7 @@ read -p "Enter Epitech password: " epitech_password
 #read_password epitech_password
 
 touch /etc/wpa_supplicant/wpa_supplicant.conf
+
 cat > /etc/wpa_supplicant/wpa_supplicant.conf << EOF
 network={
     ssid="IONIS"
@@ -53,11 +54,14 @@ udhcpc -i "$wifi_interface"
 rc-update add wpa_supplicant boot
 rc-update add networking boot
 rc-service wpa_supplicant start
+
 cat > /etc/conf.d/wpa_cli << EOF
 WPACLI_OPTS="-a /etc/wpa_supplicant/wpa_cli.sh"
 EOF
 
+rc-update add wpa_cli boot
+
 echo "
 auto $wifi_interface
 iface $wifi_interface inet dhcp
-" >> /etc/network/interface
+" >> /etc/network/interfaces
