@@ -4,6 +4,7 @@ DEVDOPTS=mdev
 INTERFACESOPTS="auto lo
 iface lo inet loopback
 
+iface wlan0 inet dhcp
 hostname stumper
 "
 DNSOPTS="-d 9.9.9.9"
