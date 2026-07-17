@@ -31,7 +31,7 @@ ERASE_DISKS=/dev/$DISK ROOT_DISK=$DISK setup-alpine -e -f https://raw.githubuser
 
 mount /dev/$DISK3 $CHROOT
 
-run_cmd 'wget -O /tmp/setup-wifi.sh "https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/stumper/setup-wifi.sh"'
+run_cmd "wget -O /tmp/setup-wifi.sh 'https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/stumper/setup-wifi.sh'"
 run_cmd 'sh /tmp/setup-wifi.sh'
 
 sed -i 's/#/''/g' $CHROOT/etc/apk/repositories
