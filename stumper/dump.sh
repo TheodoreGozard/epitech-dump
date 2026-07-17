@@ -27,11 +27,11 @@ run_cmd() {
   chroot $CHROOT $1
 }
 
-ERASE_DISKS=/dev/$1 setup-alpine -e -f https://dump.epistone.fr/stumper/alpine-answers
+ERASE_DISKS=/dev/$DISK ROOT_DISK=$DISK setup-alpine -e -f https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/stumper/alpine-answers
 
-mount /dev/$13 $CHROOT
+mount /dev/$DISK3 $CHROOT
 
-run_cmd 'wget -O /tmp/setup-wifi.sh "https://dump.epistone.fr/stumper/setup-wifi.sh"'
+run_cmd 'wget -O /tmp/setup-wifi.sh "https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/stumper/setup-wifi.sh"'
 run_cmd 'sh /tmp/setup-wifi.sh'
 
 sed -i 's/#/''/g' $CHROOT/etc/apk/repositories

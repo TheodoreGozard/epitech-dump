@@ -4,8 +4,6 @@ DEVDOPTS=mdev
 INTERFACESOPTS="auto lo
 iface lo inet loopback
 
-auto eth0
-iface eth0 inet dhcp
 hostname stumper
 "
 DNSOPTS="-d 9.9.9.9"
@@ -15,6 +13,6 @@ NTPOPTS="busybox"
 APKREPOSOPTS="-1 -c"
 USEROPTS=stumper
 SSHDOPTS=none
-DISKOPTS="-m sys /dev/sda"
+DISKOPTS="-m sys /dev/${ROOT_DISK}"
 LBUOPTS=none
 APKCACHEOPTS=none
