@@ -29,7 +29,7 @@ run_cmd() {
 
 ERASE_DISKS=/dev/$DISK ROOT_DISK=$DISK setup-alpine -e -f https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/stumper/alpine-answers
 
-if [ ${DISK:0:1} == 's']; then
+if [ ${DISK:0:1} == 's' ]; then
     PART="${DISK}3
 else
     PART="${DISK}p3
