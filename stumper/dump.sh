@@ -29,12 +29,12 @@ run_cmd() {
 
 ERASE_DISKS=/dev/$DISK ROOT_DISK=$DISK setup-alpine -e -f https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/stumper/alpine-answers
 
-if [${$DISK:0:1} = 's']
-then
-    mount /dev/$DISK3 $CHROOT
+if [ ${DISK:0:1} == 's']; then
+    PART="${DISK}3
 else
-    mount /dev/$DISKp3 $CHROOT
+    PART="${DISK}p3
 fi
+mount /dev/$PART $CHROOT
 
 run_cmd "wget -O /tmp/setup-wifi.sh 'https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/stumper/setup-wifi.sh'"
 run_cmd 'sh /tmp/setup-wifi.sh'
