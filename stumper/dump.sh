@@ -13,6 +13,7 @@ PACKAGES_LIST="
   bash
   git
   openssh-keygen
+  openssh
   valgrind
   clang20
   libgit2
