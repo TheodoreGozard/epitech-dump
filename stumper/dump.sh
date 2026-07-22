@@ -72,7 +72,7 @@ rm -rf $CHROOT/tmp/criterion-2.4.2.tar.xz $CHROOT/tmp/criterion
 
 echo "$USERNAME ALL= NOPASSWD: /sbin/reboot, /sbin/poweroff, /sbin/apk update" >> $CHROOT/etc/sudoers
 
-echo "rm -rf /home/$USERNAME/!(.*)" > $CHROOT/etc/local.d/reset-home.start
+echo "rm -rf /home/$USERNAME/*" > $CHROOT/etc/local.d/reset-home.start
 chmod +x $CHROOT/etc/local.d/reset-home.start
 #echo "apk update" > $CHROOT/etc/local.d/update-apk.start
 #chmod +x $CHROOT/etc/local.d/update-apk.start
