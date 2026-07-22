@@ -44,8 +44,10 @@ mount /dev/$PART $CHROOT
 run_cmd "wget -O /tmp/setup-wifi.sh https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/stumper/setup-wifi.sh"
 run_cmd 'sh /tmp/setup-wifi.sh $epitech_email $epitech_password'
 
-run_cmd "passwd root -d stumper"
-run_cmd "passwd $USERNAME -d $epitech_password"
+#run_cmd "passwd root -d stumper"
+echo "root:stumper" | chroot $CHROOT chpasswd
+run_cmd "adduser -D $USERNAME"
+echo "$USERNAME:$epitech_password" | chroot $CHROOT chpasswd
 
 sed -i 's/#/''/g' $CHROOT/etc/apk/repositories
 echo -e "https://alpine-repo.epistone.fr" >> $CHROOT/etc/apk/repositories
