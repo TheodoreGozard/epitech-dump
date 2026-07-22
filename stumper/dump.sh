@@ -27,7 +27,10 @@ run_cmd() {
   chroot $CHROOT $1
 }
 
-ERASE_DISKS=/dev/$DISK ROOT_DISK=$DISK setup-alpine -e -f https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/stumper/alpine-answers
+read -p "Enter Epitech email address: " epitech_email
+read -p "Enter Epitech password: " epitech_password
+
+ERASE_DISKS=/dev/$DISK ROOT_DISK=$DISK USERNAME=$epitech_email setup-alpine -e -f https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/stumper/alpine-answers
 
 if [ ${DISK:0:1} == 's' ]; then
     PART="${DISK}3"
@@ -37,7 +40,10 @@ fi
 mount /dev/$PART $CHROOT
 
 run_cmd "wget -O /tmp/setup-wifi.sh https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/stumper/setup-wifi.sh"
-run_cmd 'sh /tmp/setup-wifi.sh'
+run_cmd 'sh /tmp/setup-wifi.sh $epitech_email $epitech_password'
+
+run_cmd "passwd root -d stumper"
+run_cmd "passwd $epitech_email -d $epitech_password"
 
 sed -i 's/#/''/g' $CHROOT/etc/apk/repositories
 echo -e "https://alpine-repo.epistone.fr" >> $CHROOT/etc/apk/repositories

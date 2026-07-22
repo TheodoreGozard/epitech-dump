@@ -1,5 +1,8 @@
 #!/bin/sh
 
+epitech_email=$1
+epitech_passwrd=$2
+
 find_wifi_interface() {
     wifi_interface=""
     if command -v iw &> /dev/null; then
@@ -31,8 +34,11 @@ read_password() {
 }
 
 find_wifi_interface
-read -p "Enter Epitech email address: " epitech_email
-read -p "Enter Epitech password: " epitech_password
+
+if [ -z "$epitech_email" ] && [ -z "$epitech_password" ] then
+    read -p "Enter Epitech email address: " epitech_email
+    read -p "Enter Epitech password: " epitech_password
+fi
 #read_password epitech_password
 
 touch /etc/wpa_supplicant/wpa_supplicant.conf
