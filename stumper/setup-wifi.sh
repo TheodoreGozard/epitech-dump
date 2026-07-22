@@ -35,7 +35,7 @@ read_password() {
 
 find_wifi_interface
 
-if [ -z "$epitech_email" ] && [ -z "$epitech_password" ] then
+if [ -z "$epitech_email" ] && [ -z "$epitech_password" ]; then
     read -p "Enter Epitech email address: " epitech_email
     read -p "Enter Epitech password: " epitech_password
 fi
