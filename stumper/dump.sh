@@ -12,6 +12,7 @@ PACKAGES_LIST="
   vim
   bash
   git
+  openssh-keygen
   valgrind
   clang20
   libgit2
