@@ -1,6 +1,12 @@
 #!/bin/sh
 set -e
 
+GREEN='\e[32m'
+BOLD_GREEN='\e[1;32m'
+BLUE='\e[34m'
+BOLD='\e[1m'
+RESET='\e[0m'
+
 DISK=$1
 CHROOT="/mnt"
 PACKAGES_LIST="
@@ -31,8 +37,18 @@ run_cmd() {
   chroot $CHROOT $1
 }
 
-read -p "Enter Epitech email address: " epitech_email
-read -p "Enter Epitech password: " epitech_password
+echo ""
+echo -e "${BOLD}${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
+echo -e "${BOLD}${BLUE}  📧 Epitech Email Configuration${RESET}"
+echo -e "${BOLD}${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
+echo ""
+read -p "$(echo -e ${BOLD}) Enter your Epitech email address:${RESET} " epitech_email
+echo ""
+echo -e "${BOLD}${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
+echo -e "${BOLD}${BLUE}  📧 Epitech Password Configuration${RESET}"
+echo -e "${BOLD}${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
+echo ""
+read -p "$(echo -e ${BOLD})Enter Epitech password:${RESET} " epitech_password
 
 USERNAME="${epitech_email%@epitech.eu}"
 
@@ -80,3 +96,12 @@ run_cmd "rc-update add local default"
 
 run_cmd "wget -O /tmp/setup-ssh-key.sh https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/stumper/setup-ssh-key.sh"
 run_cmd "sh /tmp/setup-ssh-key.sh"
+
+echo ""
+echo -e "${GREEN}╔════════════════════════════════════════════╗${RESET}"
+echo -e "${GREEN}║${RESET}                                            ${GREEN}║${RESET}"
+echo -e "${GREEN}║${RESET}  ${BOLD_GREEN}Installation finished${RESET}                     ${GREEN}║${RESET}"
+echo -e "${GREEN}║${RESET}  ${BOLD_GREEN}You can type reboot and press enter${RESET}       ${GREEN}║${RESET}"
+echo -e "${GREEN}║${RESET}                                            ${GREEN}║${RESET}"
+echo -e "${GREEN}╚════════════════════════════════════════════╝${RESET}"
+echo ""
