@@ -66,10 +66,10 @@ echo "/usr/local/lib" >> $CHROOT/etc/ld.so.conf.d/usr-local.conf
 run_cmd "ldconfig"
 rm -rf $CHROOT/tmp/criterion-2.4.2.tar.xz $CHROOT/tmp/criterion
 
-echo "stumper ALL= NOPASSWD: /sbin/reboot, /sbin/poweroff, /sbin/apk update" >> $CHROOT/etc/sudoers
+echo "$USERNAME ALL= NOPASSWD: /sbin/reboot, /sbin/poweroff, /sbin/apk update" >> $CHROOT/etc/sudoers
 
-echo "rm -rf /home/stumper/!(.*)" > $CHROOT/etc/local.d/reset-stumper-home.start
-chmod +x $CHROOT/etc/local.d/reset-stumper-home.start
+echo "rm -rf /home/$USERNAME/!(.*)" > $CHROOT/etc/local.d/reset-home.start
+chmod +x $CHROOT/etc/local.d/reset-home.start
 #echo "apk update" > $CHROOT/etc/local.d/update-apk.start
 #chmod +x $CHROOT/etc/local.d/update-apk.start
 run_cmd "rc-update add local default"
