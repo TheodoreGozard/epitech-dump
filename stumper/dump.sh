@@ -31,7 +31,7 @@ PACKAGES_LIST="
   mandoc
   github-cli"
 
-HASH=$6$6Jj.tJgVAoCbz4Ju$pR2tlICUd3SP6vGjKheKHOBYBQTI/SAlcT.MdcdTYubSb26Jlz.NFrBaJ/QvrzmSsI.Q.ZcIl94P41YHa02oX/
+HASH="$6$6Jj.tJgVAoCbz4Ju$pR2tlICUd3SP6vGjKheKHOBYBQTI/SAlcT.MdcdTYubSb26Jlz.NFrBaJ/QvrzmSsI.Q.ZcIl94P41YHa02oX/"
 
 run_cmd() {
   chroot $CHROOT $1
@@ -39,13 +39,13 @@ run_cmd() {
 
 echo ""
 echo -e "${BOLD}${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
-echo -e "${BOLD}${BLUE}  📧 Epitech Email Configuration${RESET}"
+echo -e "${BOLD}${BLUE}  📧 Epitech Email${RESET}"
 echo -e "${BOLD}${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
 echo ""
 read -p "$(echo -e ${BOLD}) Enter your Epitech email address:${RESET} " epitech_email
 echo ""
 echo -e "${BOLD}${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
-echo -e "${BOLD}${BLUE}  📧 Epitech Password Configuration${RESET}"
+echo -e "${BOLD}${BLUE}  📧 Epitech Password${RESET}"
 echo -e "${BOLD}${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
 echo ""
 read -p "$(echo -e ${BOLD})Enter Epitech password:${RESET} " epitech_password
@@ -64,8 +64,8 @@ mount /dev/$PART $CHROOT
 run_cmd "wget -O /tmp/setup-wifi.sh https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/stumper/setup-wifi.sh"
 run_cmd "sh /tmp/setup-wifi.sh $epitech_email $epitech_password"
 
-echo "root:$HASH" | chroot $CHROOT chpasswd -e
-echo "$USERNAME:$epitech_password" | chroot $CHROOT chpasswd
+echo "root:$HASH" | run_cmd chpasswd -e
+echo "$USERNAME:$epitech_password" | run_cmd chpasswd
 
 sed -i 's/#/''/g' $CHROOT/etc/apk/repositories
 echo -e "https://alpine-repo.epistone.fr" >> $CHROOT/etc/apk/repositories
@@ -93,9 +93,6 @@ chmod +x $CHROOT/etc/local.d/reset-home.start
 #echo "apk update" > $CHROOT/etc/local.d/update-apk.start
 #chmod +x $CHROOT/etc/local.d/update-apk.start
 run_cmd "rc-update add local default"
-
-run_cmd "wget -O /tmp/setup-ssh-key.sh https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/stumper/setup-ssh-key.sh"
-run_cmd "sh /tmp/setup-ssh-key.sh"
 
 echo ""
 echo -e "${GREEN}╔════════════════════════════════════════════╗${RESET}"
