@@ -30,7 +30,9 @@ run_cmd() {
 read -p "Enter Epitech email address: " epitech_email
 read -p "Enter Epitech password: " epitech_password
 
-ERASE_DISKS=/dev/$DISK ROOT_DISK=$DISK USERNAME=$epitech_email setup-alpine -e -f https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/stumper/alpine-answers
+USERNAME="${epitech_email%@epitech.eu}"
+
+ERASE_DISKS=/dev/$DISK ROOT_DISK=$DISK USERNAME=$USERNAME setup-alpine -e -f https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/stumper/alpine-answers
 
 if [ ${DISK:0:1} == 's' ]; then
     PART="${DISK}3"
@@ -43,7 +45,7 @@ run_cmd "wget -O /tmp/setup-wifi.sh https://raw.githubusercontent.com/TheodoreGo
 run_cmd 'sh /tmp/setup-wifi.sh $epitech_email $epitech_password'
 
 run_cmd "passwd root -d stumper"
-run_cmd "passwd $epitech_email -d $epitech_password"
+run_cmd "passwd $USERNAME -d $epitech_password"
 
 sed -i 's/#/''/g' $CHROOT/etc/apk/repositories
 echo -e "https://alpine-repo.epistone.fr" >> $CHROOT/etc/apk/repositories
