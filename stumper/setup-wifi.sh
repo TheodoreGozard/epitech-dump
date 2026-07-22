@@ -1,7 +1,7 @@
 #!/bin/sh
 
 epitech_email=$1
-epitech_passwrd=$2
+epitech_password=$2
 
 find_wifi_interface() {
     wifi_interface=""
