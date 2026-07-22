@@ -1,5 +1,5 @@
 KEYMAPOPTS="fr"
-HOSTNAMEOPTS=${USERNAME}
+HOSTNAMEOPTS="stumper"
 DEVDOPTS=mdev
 INTERFACESOPTS="auto lo
 iface lo inet loopback
