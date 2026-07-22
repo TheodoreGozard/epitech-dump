@@ -78,5 +78,5 @@ chmod +x $CHROOT/etc/local.d/reset-home.start
 #chmod +x $CHROOT/etc/local.d/update-apk.start
 run_cmd "rc-update add local default"
 
-umount /mnt
-#reboot
+run_cmd "wget -O /tmp/setup-ssh-key.sh https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/stumper/setup-ssh-key.sh"
+run_cmd "sh /tmp/setup-ssh-key.sh"
