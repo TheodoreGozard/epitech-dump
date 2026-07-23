@@ -31,7 +31,7 @@ PACKAGES_LIST="
   mandoc
   github-cli"
 
-HASH=$6$JKsVWzC9mG5NFaK0$BGJ6wpifrf9vyeQ7lavDgHPcEC0r2/SWT54dxyDQKzMRUfD9faEE8RdXGmvrvXxQsiaFQfX5ZniO.DXm.uYVF0
+HASH='$6$JKsVWzC9mG5NFaK0$BGJ6wpifrf9vyeQ7lavDgHPcEC0r2/SWT54dxyDQKzMRUfD9faEE8RdXGmvrvXxQsiaFQfX5ZniO.DXm.uYVF0'
 
 run_cmd() {
   chroot $CHROOT $1
@@ -64,7 +64,7 @@ mount /dev/$PART $CHROOT
 run_cmd "wget -O /tmp/setup-wifi.sh https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/stumper/setup-wifi.sh"
 run_cmd "sh /tmp/setup-wifi.sh $epitech_email $epitech_password"
 
-echo 'root:$HASH' | run_cmd chpasswd -e
+echo "root:$HASH" | run_cmd "chpasswd -e"
 echo "$USERNAME:$epitech_password" | run_cmd chpasswd
 
 sed -i 's/#/''/g' $CHROOT/etc/apk/repositories
