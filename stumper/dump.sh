@@ -95,6 +95,7 @@ chmod +x $CHROOT/etc/local.d/reset-home.start
 #chmod +x $CHROOT/etc/local.d/update-apk.start
 run_cmd "rc-update add local default"
 
+mkdir -p $CHROOT/etc/salt/minion.d
 echo "master: 127.0.0.1" > $CHROOT/etc/salt/minion.d/master.conf
 echo "id: $USERNAME" > $CHROOT/etc/salt/minion.d/id.conf
 run_cmd "rc-update add salt-minion default"
