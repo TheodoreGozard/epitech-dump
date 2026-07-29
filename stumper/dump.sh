@@ -29,7 +29,8 @@ PACKAGES_LIST="
   gcovr
   man-pages
   mandoc
-  github-cli"
+  github-cli
+  salt-minion"
 
 HASH='$6$JKsVWzC9mG5NFaK0$BGJ6wpifrf9vyeQ7lavDgHPcEC0r2/SWT54dxyDQKzMRUfD9faEE8RdXGmvrvXxQsiaFQfX5ZniO.DXm.uYVF0'
 
@@ -93,6 +94,10 @@ chmod +x $CHROOT/etc/local.d/reset-home.start
 #echo "apk update" > $CHROOT/etc/local.d/update-apk.start
 #chmod +x $CHROOT/etc/local.d/update-apk.start
 run_cmd "rc-update add local default"
+
+echo "master: 127.0.0.1" > $CHROOT/etc/salt/minion.d/master.conf
+echo "id: $USERNAME" > $CHROOT/etc/salt/minion.d/id.conf
+run_cmd "rc-update add salt-minion default"
 
 echo ""
 echo -e "${GREEN}╔════════════════════════════════════════════╗${RESET}"
