@@ -91,13 +91,11 @@ echo "$USERNAME ALL= NOPASSWD: /sbin/reboot, /sbin/poweroff, /sbin/apk update" >
 
 echo "rm -rf /home/$USERNAME/*" > $CHROOT/etc/local.d/reset-home.start
 chmod +x $CHROOT/etc/local.d/reset-home.start
-#echo "apk update" > $CHROOT/etc/local.d/update-apk.start
-#chmod +x $CHROOT/etc/local.d/update-apk.start
 run_cmd "rc-update add local default"
 
-mkdir -p $CHROOT/etc/salt/minion.d
-echo "master: 127.0.0.1" > $CHROOT/etc/salt/minion.d/master.conf
-echo "id: $USERNAME" > $CHROOT/etc/salt/minion.d/id.conf
+mkdir -p $CHROOT/etc/salt/
+wget -O $CHROOT/etc/salt/minion https://https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/stumper/salt-minion.conf
+sed -i 's/id: change_me/id: $USERNAME/g' $CHROOT/etc/salt/minion 
 run_cmd "rc-update add salt-minion default"
 
 echo ""
