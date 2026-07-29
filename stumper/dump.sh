@@ -94,8 +94,8 @@ chmod +x $CHROOT/etc/local.d/reset-home.start
 run_cmd "rc-update add local default"
 
 mkdir -p $CHROOT/etc/salt/
-wget -O $CHROOT/etc/salt/minion https://https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/stumper/salt-minion.conf
-sed -i 's/id: change_me/id: $USERNAME/g' $CHROOT/etc/salt/minion 
+wget -O $CHROOT/etc/salt/minion https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/stumper/salt-minion.conf
+sed -i "s/id: change_me/id: $USERNAME/g" $CHROOT/etc/salt/minion 
 run_cmd "rc-update add salt-minion default"
 
 echo ""
