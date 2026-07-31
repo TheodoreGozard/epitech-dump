@@ -11,7 +11,7 @@ DISK=$1
 CHROOT="/mnt"
 PACKAGES_LIST="
   sudo
-  build-base 
+  build-base
   epiclang
   banana-coding-style-checker
   emacs
