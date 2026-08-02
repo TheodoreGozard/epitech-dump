@@ -16,7 +16,7 @@ add-apt-repository -y -s ppa:epitech/ppa
 add-apt-repository -y -s universe
 apt update
 
-apt install -y wget
+apt install -y wget curl
 
 wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo tee /etc/apt/trusted.gpg.d/llvm.asc
 echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/llvm.asc] https://apt.llvm.org/noble/ llvm-toolchain-noble-20 main" | sudo tee /etc/apt/sources.list.d/llvm.list
@@ -43,3 +43,4 @@ curl -o /etc/dconf/db/local.d/00-background https://raw.githubusercontent.com/Th
 dconf update
 
 apt upgrade -y
+apt autoremove -y
