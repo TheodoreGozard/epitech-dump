@@ -99,6 +99,11 @@ wget -O $CHROOT/etc/salt/minion https://raw.githubusercontent.com/TheodoreGozard
 sed -i "s/id: change_me/id: $USERNAME/g" $CHROOT/etc/salt/minion 
 run_cmd "rc-update add salt-minion default"
 
+cat > $CHROOT/etc/motd << EOF
+Epitech stumper session exam!
+You are not supposed to change any configuration.
+EOF
+
 echo ""
 echo -e "${GREEN}╔════════════════════════════════════════════╗${RESET}"
 echo -e "${GREEN}║${RESET}                                            ${GREEN}║${RESET}"
