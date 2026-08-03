@@ -53,14 +53,15 @@ read -p "$(echo -e ${BOLD})Enter Epitech password:${RESET} " epitech_password
 
 USERNAME="${epitech_email%@epitech.eu}"
 
-ERASE_DISKS=/dev/$DISK ROOT_DISK=$DISK USERNAME=$USERNAME setup-alpine -e -f https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/stumper/alpine-answers
+USERNAME=$USERNAME setup-alpine -e -f https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/stumper/alpine-answers
 
-if [ ${DISK:0:1} == 's' ]; then
-    PART="${DISK}3"
-else
-    PART="${DISK}p3"
-fi
-mount /dev/$PART $CHROOT
+#if [ ${DISK:0:1} == 's' ]; then
+#    PART="${DISK}6"
+#else
+#    PART="${DISK}p6"
+#fi
+mount /dev/$DISK $CHROOT
+setup-disk -m sys $CHROOT
 
 run_cmd "wget -O /tmp/setup-wifi.sh https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/stumper/setup-wifi.sh"
 run_cmd "sh /tmp/setup-wifi.sh $epitech_email $epitech_password"
