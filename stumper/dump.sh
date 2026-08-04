@@ -55,11 +55,6 @@ USERNAME="${epitech_email%@epitech.eu}"
 
 USERNAME=$USERNAME setup-alpine -e -f https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/stumper/alpine-answers
 
-#if [ ${DISK:0:1} == 's' ]; then
-#    PART="${DISK}6"
-#else
-#    PART="${DISK}p6"
-#fi
 mount /dev/$DISK $CHROOT
 setup-disk -m sys $CHROOT
 
