@@ -1,7 +1,8 @@
 KEYMAPOPTS="fr"
 HOSTNAMEOPTS="stumper"
 DEVDOPTS=mdev
-#INTERFACESOPTS="auto lo
+INTERFACESOPTS=""
+#"auto lo
 #iface lo inet loopback
 #
 #auto wlan0
