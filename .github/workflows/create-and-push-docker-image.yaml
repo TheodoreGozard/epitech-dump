@@ -19,7 +19,7 @@ jobs:
 
       - name: Build and Push the Docker image on Github registry
         run: |
-          docker build . --file Dockerfile --tag ghcr.io/theodoregozard/dump
+          docker build . --file .docker/Dockerfile --tag ghcr.io/theodoregozard/dump
           docker push ghcr.io/theodoregozard/dump
 
       
