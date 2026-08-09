@@ -37,10 +37,12 @@ curl -o /etc/default/grub https://raw.githubusercontent.com/TheodoreGozard/epite
 update-grub
 
 cp /boot/grub/background.png /usr/share/backgrounds
-echo -e "user-db:user\nsystem-db:local" > /etc/dconf/profile/user
-mkdir /etc/dconf/db/local.d/
-curl -o /etc/dconf/db/local.d/00-background https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/00-background
-dconf update
+sudo -u $USER settings set org.gnome.desktop.background picture-uri file:///usr/share/backgrounds/background.png
+sudo -u $USER gsettings set org.gnome.desktop.background picture-uri-dark file:///usr/share/backgrounds/background.png
+#echo -e "user-db:user\nsystem-db:local" > /etc/dconf/profile/user
+#mkdir /etc/dconf/db/local.d/
+#curl -o /etc/dconf/db/local.d/00-background https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/00-background
+#dconf update
 
 apt upgrade -y
 apt autoremove -y
