@@ -39,10 +39,12 @@ update-grub
 cp /boot/grub/background.png /usr/share/backgrounds
 
 mkdir -p /etc/dconf/profile/user
-tee /etc/dconf/profile/user > /dev/null <<EOF
+
+cat > /etc/dconf/profile/user << EOF
 user-db:user
 system-db:local
 EOF
+
 mkdir -p /etc/dconf/db/local.d/
 curl -o /etc/dconf/db/local.d/00-background https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/00-background
 dconf update
