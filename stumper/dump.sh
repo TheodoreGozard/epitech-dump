@@ -1,5 +1,4 @@
 #!/bin/sh
-set -e
 
 GREEN='\e[32m'
 BOLD_GREEN='\e[1;32m'
