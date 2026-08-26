@@ -42,13 +42,13 @@ echo -e "${BOLD}${BLUE}━━━━━━━━━━━━━━━━━━━
 echo -e "${BOLD}${BLUE}  📧 Epitech Email${RESET}"
 echo -e "${BOLD}${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
 echo ""
-read -p "$(echo -e ${BOLD}) Enter your Epitech email address:${RESET} " epitech_email
+read -p "Enter your Epitech email address: " epitech_email
 echo ""
 echo -e "${BOLD}${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
 echo -e "${BOLD}${BLUE}  📧 Epitech Password${RESET}"
 echo -e "${BOLD}${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
 echo ""
-read -p "$(echo -e ${BOLD})Enter Epitech password:${RESET} " epitech_password
+read -p "Enter Epitech password: " epitech_password
 
 USERNAME="${epitech_email%@epitech.eu}"
 
@@ -102,7 +102,6 @@ echo ""
 echo -e "${GREEN}╔════════════════════════════════════════════╗${RESET}"
 echo -e "${GREEN}║${RESET}                                            ${GREEN}║${RESET}"
 echo -e "${GREEN}║${RESET}  ${BOLD_GREEN}Installation finished${RESET}                     ${GREEN}║${RESET}"
-echo -e "${GREEN}║${RESET}  ${BOLD_GREEN}You can type reboot and press enter${RESET}       ${GREEN}║${RESET}"
 echo -e "${GREEN}║${RESET}                                            ${GREEN}║${RESET}"
 echo -e "${GREEN}╚════════════════════════════════════════════╝${RESET}"
 echo ""
