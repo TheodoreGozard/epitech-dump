@@ -4,7 +4,7 @@ autoinstall:
     - storage
     - identity
     - keyboard
-  locale: en_US.UTF-8
+  locale: "en_US.UTF-8"
   refresh-installer:
     update: true
     channel: latest/edge
@@ -14,17 +14,17 @@ autoinstall:
     toggle: null
   source:
     id: ubuntu-desktop
-  apt:
-    preserve_sources_list: false
-    mirror-selection:
-      primary:
-        - uri: "http://ubuntu.univ-reims.fr/ubuntu"
-          arches: [amd64]
-        - uri: "https://www-ftp.lip6.fr/pub/linux/distribution/Ubuntu/archive"
-          arches: [amd64]
-        - country-mirror
-    fallback: abort
-    geoip: true
+  #apt:
+  #  preserve_sources_list: false
+  #  mirror-selection:
+  #    primary:
+  #      - uri: "http://ubuntu.univ-reims.fr/ubuntu"
+  #        arches: [amd64]
+  #      - uri: "https://www-ftp.lip6.fr/pub/linux/distribution/Ubuntu/archive"
+  #        arches: [amd64]
+  #      - country-mirror
+  #  fallback: abort
+  #  geoip: true
   codecs:
     install: true
   drivers:
