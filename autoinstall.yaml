@@ -35,9 +35,9 @@ autoinstall:
     - git
     - sudo
     - curl
-  timezone: Europe/Paris
+  timezone: "Europe/Paris"
   updates: all
-  shutdown: "reboot"
+  shutdown: reboot
   late-commands:
     - wget -O - "https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/dump.sh²" > /target/tmp/dump.sh
     - curtin in-target --target=/target -- /bin/bash /tmp/dump.sh
