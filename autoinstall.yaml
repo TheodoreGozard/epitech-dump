@@ -25,19 +25,19 @@ autoinstall:
   #      - country-mirror
   #  fallback: abort
   #  geoip: true
-  #codecs:
-  #  install: true
-  #drivers:
-  #  install: true
+  codecs:
+    install: true
+  drivers:
+    install: true
   #debconf-selections: |
   # ufw ufw/enable boolean true
   #packages:
   #  - git
   #  - sudo
   #  - curl
-  #timezone: "Europe/Paris"
+  timezone: "Europe/Paris"
   #updates: all
   #shutdown: reboot
-  #late-commands:
-  #  - wget -O - "https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/dump.sh" > /target/tmp/dump.sh
-  #  - curtin in-target --target=/target -- /bin/bash /tmp/dump.sh
+  late-commands:
+    - wget -O - "https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/dump.sh" > /target/tmp/dump.sh
+    - curtin in-target --target=/target -- /bin/bash /tmp/dump.sh
