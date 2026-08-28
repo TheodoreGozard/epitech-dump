@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Theodore Gozard" />
+  <title>Epitech Dump</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <base target="_blank">
+
+  <style type="text/css">
+  /*
+    HEADER
+  */
+
+  header {
+    height:500px;
+    background: url("img/cover_PGE.jpg") right bottom;
+    background-size: 45%;
+    margin:0px;
+    color: white;
+  }
+
+  header h1 {
+    padding: 200px 0 0 30px;
+    text-transform: uppercase;
+    color: white;  
+    font-size: 60px;
+    margin:  0;
+  }
+
+  header p.subtitle {
+    padding: 170px 0 0 30px;
+    margin:  0px;
+    padding-top: 0px;
+    text-transform: uppercase;
+    font-size: 20px;
+  }
+
+  header p.author {
+    display: none;
+  }
+
+
+
+
+  /*
+    BLOCKS
+  */
+
+  .note {
+      border: solid 1px rgb(200, 200, 200);
+      box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+      border-radius:10px;    
+      padding: 10px 10px 10px 20px;
+      margin:30px 20px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      background-color:rgba(255, 0, 0, 0.1);    
+  }
+  .note:before {
+    content: url(img/icon_note_small.png);
+    margin-top:-35px;
+    margin-left:-35px;
+    margin-bottom: -20px;
+  }
+
+  .warning {
+      border: solid 1px rgb(200, 200, 200);
+      box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+      border-radius:10px;
+      margin:30px 20px 20px 20px;
+      background-color: rgba(88, 147, 193, 0.1);
+      padding: 10px 10px 10px 20px;
+      display: flex;
+      flex-direction: column;
+  }
+  .warning:before {
+    content: url(img/icon_warning_small.png);
+    margin-top:-35px;
+    margin-left:-35px;
+    margin-bottom: -20px;
+  }
+
+  .info {
+      border: solid 1px rgb(200, 200, 200);
+      box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+      border-radius:10px;    
+      background-color: rgb(255, 255, 255);
+      padding: 10px 10px 10px 20px;
+      margin:30px 20px 20px 20px;
+      display: flex;
+      flex-direction: column;
+  }
+  .info:before {
+    content: url(img/icon_info_small.png);
+    margin-top:-35px;
+    margin-left:-35px;
+    margin-bottom: -20px;
+  }
+
+  .tip {
+      border: solid 1px rgb(200, 200, 200);
+      box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+      border-radius:10px;    
+      background-color: rgba(240, 220, 154, 0.1);
+      padding: 10px 10px 10px 20px;
+      margin:30px 20px 20px 20px;
+      display: flex;
+      flex-direction: column;
+  }
+  .tip:before {
+    content: url(img/icon_tip_small.png);
+    margin-top:-35px;
+    margin-left:-35px;
+    margin-bottom: -20px;
+  }
+
+  .terminal {
+      border: solid 1px rgb(200, 200, 200);
+      box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+      border-radius:10px;    
+      background-color: rgba(240, 220, 154, 0.1);
+      padding: 10px 10px 10px 20px;
+      margin:30px 20px 20px 20px;
+      display: flex;
+      flex-direction: column;
+  }
+  .terminal:before {
+    content: url(img/icon_terminal_small.png);
+    margin-top:-35px;
+    margin-left:-35px;
+    margin-bottom: -20px;
+  }
+
+  /*
+    QUOTE
+  */
+
+  .quote {
+      border-left: solid 3px rgb(140, 140, 140);
+      border-radius:0 10px 10px 0;    
+      padding: 0px 0px 0px 20px;
+      margin:30px 40px 20px 40px;
+      display: flex;
+      flex-direction: column;
+      background-color:rgba(140, 140, 140, 0.1); 
+      position: relative;   
+  }
+
+  .quote author {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      font-weight: bold;
+      font-style: normal;
+  }
+  .quote author:before {
+    content: '-- ';
+  }
+  .quote author:after {
+    content: '-- ';
+  }
+
+  /*
+    COLUMNS
+  */
+
+  div.column-33 {
+    width:  31%;
+    display: inline-block;
+    min-width: 120px;
+    vertical-align: middle;
+    padding-left:  15px;
+  }
+  div.column-50 {
+    width:  48%;
+    display: inline-block;
+    min-width: 120px;
+    vertical-align: middle;
+    padding-left:  15px;
+  }
+  div.column-66 {
+    width:  65%;
+    display: inline-block;
+    min-width: 120px;
+    vertical-align: middle;
+    padding-left:  15px;
+  }
+  div.column {
+    display: inline-block;
+    min-width: 120px;
+    vertical-align: middle;
+    padding-left:  15px;
+  }
+  div.columns {
+    padding-left:  -15px;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+
+
+  /*
+    FOOTER
+  */
+
+  div.footer {
+    background: #FFFFFF url("img/footer_PGE.jpg") no-repeat;
+    height:  215px;
+  }
+
+
+
+
+  /*
+    GENERIC
+  */
+
+  html {
+    font-size: 100%;
+    overflow-y: scroll;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+
+  body {
+    color: #444;
+    font-family: Montserrat-thin, sans-serif;
+    font-size: 12px;
+    margin: auto;
+    padding:  0 10px 0 10px;
+    max-width: 800px;
+    background: #fefefe;
+  }
+
+  a {
+    color: #016bb3;
+
+  }
+
+  a:visited {
+    color: #0b0080;
+  }
+
+  a:hover {
+    color: #06e;
+  }
+
+  a:active {
+    color: #faa700;
+  }
+
+  a:focus {
+    outline: thin dotted;
+  }
+
+  *::-moz-selection {
+    background: rgba(255, 255, 0, 0.3);
+    color: #000;
+  }
+
+  *::selection {
+    background: rgba(255, 255, 0, 0.3);
+    color: #000;
+  }
+
+  a::-moz-selection {
+    background: rgba(255, 255, 0, 0.3);
+    color: #016bb3;
+  }
+
+  a::selection {
+    background: rgba(255, 255, 0, 0.3);
+    color: #016bb3;
+  }
+
+  p {
+    margin: 1em 0;
+  }
+
+  img {
+    max-width: 100%;
+    border-radius: 10px;
+  }
+
+  h1 {
+    color: #016bb3;
+    line-height: 100%;
+    margin-top: 2em;
+    font-weight: normal;
+    font-size: 3em;
+  }
+
+  h2 {
+    color: #016bb3;
+    line-height: 110%;
+    margin-top: 2em;
+    font-weight: bold;
+  }
+
+  h3, h4, h5, h6 {
+    color: #111;
+    line-height: 125%;
+    margin-top: 2em;
+    font-weight: normal;
+  }
+
+
+  blockquote {
+    color: #666666;
+    margin: 0;
+    padding-left: 3em;
+    border-left: 0.5em #EEE solid;
+  }
+
+  hr {
+    display: block;
+    height: 2px;
+    border: 0;
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #eee;
+    margin: 1em 0;
+    padding: 0;
+  }
+
+  pre, code, kbd, samp {
+    color: #000;
+    font-family: monospace, monospace;
+    _font-family: 'courier new', monospace;
+    font-size: 0.98em;
+  }
+
+  pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  b, strong {
+    font-weight: bold;
+  }
+
+  dfn {
+    font-style: italic;
+  }
+
+  ins {
+    background: #ff9;
+    color: #000;
+    text-decoration: none;
+  }
+
+  mark {
+    background: #ff0;
+    color: #000;
+    font-style: italic;
+    font-weight: bold;
+  }
+
+  sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+
+  sup {
+    top: -0.5em;
+  }
+
+  sub {
+    bottom: -0.25em;
+  }
+
+  ul, ol {
+    margin: 1em 0;
+    padding: 0 0 0 2em;
+  }
+
+  li p:last-child {
+    margin-bottom: 0;
+  }
+
+  ul ul, ol ol {
+    margin: .3em 0;
+  }
+
+  dl {
+    margin-bottom: 1em;
+  }
+
+  dt {
+    font-weight: bold;
+    margin-bottom: .8em;
+  }
+
+  dd {
+    margin: 0 0 .8em 2em;
+  }
+
+  dd:last-child {
+    margin-bottom: 0;
+  }
+
+  img {
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+    vertical-align: middle;
+  }
+
+  figure {
+    display: block;
+    text-align: center;
+    margin: 1em 0;
+  }
+
+  figure img {
+    border: none;
+    margin: 0 auto;
+  }
+
+  figcaption {
+    font-size: 0.8em;
+    font-style: italic;
+    margin: 0 0 .8em;
+  }
+
+  table {
+    margin-bottom: 2em;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+
+  table th {
+    padding: .2em 1em;
+    background-color: #eee;
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+  }
+
+  table td {
+    padding: .2em 1em;
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    vertical-align: top;
+  }
+
+  .author {
+    font-size: 1.2em;
+    text-align: center;
+  }
+
+  @media only screen and (min-width: 480px) {
+    body {
+      font-size: 14px;
+    }
+  }
+  @media only screen and (min-width: 768px) {
+    body {
+      font-size: 16px;
+    }
+  }
+  @media print {
+    * {
+      background: transparent !important;
+      color: black !important;
+      filter: none !important;
+      -ms-filter: none !important;
+    }
+
+    a, a:visited {
+      text-decoration: underline;
+    }
+
+    hr {
+      height: 1px;
+      border: 0;
+      border-bottom: 1px solid black;
+    }
+
+    a[href]:after {
+      content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+      content: " (" attr(title) ")";
+    }
+
+    .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after {
+      content: "";
+    }
+
+    pre, blockquote {
+      border: 1px solid #999;
+      padding-right: 1em;
+      page-break-inside: avoid;
+    }
+
+    tr, img {
+      page-break-inside: avoid;
+    }
+
+    img {
+      max-width: 100% !important;
+    }
+
+    @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+  }
+
+    @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+  }
+
+    p, h2, h3 {
+      orphans: 3;
+      widows: 3;
+    }
+
+    h2, h3 {
+      page-break-after: avoid;
+    }
+  }
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Epitech Dump</h1>
+<p class="subtitle">Rigid like the stone</p>
+<p class="author">Theodore Gozard</p>
+</header>
+<!-- # Before start -->
+<p><br><br />
+<br><br />
+<br></p>
+<figure>
+<img src="rock-warning.png" title="Warning" style="width:50.0%"
+alt="Warning" />
+<figcaption aria-hidden="true">Warning</figcaption>
+</figure>
+<div class="note">
+<p><strong>You are going to delete everything on your computer. If you
+forgot to backup some data please ask an APE. Once started, it will be
+too late</strong></p>
+</div>
+<p><br><br />
+<br><br />
+<br><br />
+<br></p>
+<figure>
+<img src="rock-best.png" title="rock" style="width:40.0%" alt="rock" />
+<figcaption aria-hidden="true">rock</figcaption>
+</figure>
+<div class="center">
+<p><em>Don’t forget, keep the stone in your pocket</em></p>
+</div>
+<h1 id="boot-on-usb-stick">1. Boot on USB stick</h1>
+<p>To install an operating system on your computer from a USB stick, you
+first need to select the usb stick as a boot device. When powering your
+computer, you need to press a specific key to enter the boot menu.
+Depending on your computer’s brand, this key may change.</p>
+<div class="tip">
+<p>You have to spam the key while the computer is powering up until the
+boot menu shows up</p>
+</div>
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 35%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Brand</strong></th>
+<th><strong>Boot Menu Key</strong></th>
+<th><strong>BIOS/UEFI Setup Key</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Framework</strong></td>
+<td>F12</td>
+<td>F2</td>
+</tr>
+<tr class="even">
+<td><strong>Acer</strong></td>
+<td>F12 (enable in BIOS)</td>
+<td>Del or F2</td>
+</tr>
+<tr class="odd">
+<td><strong>ASUS</strong></td>
+<td>Esc or F8</td>
+<td>Del or F2</td>
+</tr>
+<tr class="even">
+<td><strong>Dell</strong></td>
+<td>F12</td>
+<td>F2</td>
+</tr>
+<tr class="odd">
+<td><strong>HP</strong></td>
+<td>Esc → F9</td>
+<td>Esc → F10</td>
+</tr>
+<tr class="even">
+<td><strong>Lenovo</strong></td>
+<td>F12 or Fn + F12</td>
+<td>F1 or F2</td>
+</tr>
+<tr class="odd">
+<td><strong>MSI</strong></td>
+<td>F11</td>
+<td>Del</td>
+</tr>
+<tr class="even">
+<td><strong>Samsung</strong></td>
+<td>Esc or F12</td>
+<td>F2</td>
+</tr>
+<tr class="odd">
+<td><strong>Gigabyte</strong></td>
+<td>F12</td>
+<td>Del</td>
+</tr>
+</tbody>
+</table>
+<p>In the boot menu search the USB stick and press enter.</p>
+<p><br></p>
+<div class="warning">
+<p>If you get the following screen when booting on the USB stick, go to
+<strong><a href="#enroll-ventoy-secure-boot-key">Enroll Ventoy Secure
+Boot Key</a></strong><br />
+<br><br />
+<img src="ventoy-key-violation.png" title="ventoy-key-violation"
+style="width:60.0%" alt="ventoy-key-violation" /></p>
+</div>
+<p>You can now choose Windows or Ubuntu depending on which operating
+system you want to install</p>
+<p><br><br />
+<img src="ventoy.png" title="Ventoy" style="width:65.0%"
+alt="Ventoy" /></p>
+<h1 id="windows-installation">2. Windows installation</h1>
+<p>Choose <strong>Winboot mode</strong> and press Enter</p>
+<p><br><br />
+<img src="ubuntu-boot-mode.png" title="ubuntu boot mode"
+style="width:70.0%" alt="ubuntut boot mode" /></p>
+<h2 id="keyboard-layout">Keyboard Layout</h2>
+<p>Choose the right <strong>keybord layout</strong> for you (Azerty or
+Qwerty in most case)</p>
+<p><br><br />
+<img src="w11-choose-kb.png" title="W11 keyboard layout"
+style="width:70.0%" alt="W11 keyboard layout" /></p>
+<h2 id="windows-post-installation">Windows post installation</h2>
+<p>Click on <strong>I don’t have internet</strong></p>
+<p><br><br />
+<img src="w11-no-internet-border.png" title="W11 no internet"
+style="width:70.0%" alt="W11 no internet" /></p>
+<p><br><br />
+<br></p>
+<p>Once logged into Windows, connect to the <strong>IONIS
+Wifi</strong></p>
+<p><strong></strong> : <em>Epitech email</em><br />
+<strong></strong> : <em>Epitech password</em></p>
+<div class="note">
+<p>If you can’t connect to the wifi, ask an <strong>APE</strong></p>
+</div>
+<p>Once everything is finished and working, you can go the <a
+href="#ubuntu">Ubuntu installation page</a></p>
+<div class="tip">
+<p>Don’t forget to <strong>update Windows</strong> later at
+<strong>home</strong> !</p>
+</div>
+<h1 id="ubuntu">3. Ubuntu</h1>
+<div class="tip">
+<p>If you forgot how to <strong>enter</strong> the <strong>boot
+menu</strong>, go back to the <strong><a href="#boot-on-usb-stick">Task
+1 (boot on USB stick)</a></strong></p>
+</div>
+<p>Choose <strong>Boot in normal mode</strong> and press Enter</p>
+<p><br><br />
+<img src="ubuntu-boot-mode.png" title="ubuntu boot mode"
+style="width:70.0%" alt="ubuntut boot mode" /></p>
+<p>Select <strong>Try or Install Ubuntu</strong></p>
+<p><br><br />
+<img src="ubuntu-grub-install.png" title="grub install"
+style="width:70.0%" alt="grub install" /></p>
+<p><br><br />
+<br></p>
+<p>In language selection, select <strong>English</strong> then click
+next</p>
+<p><br><br />
+<img src="ubuntu-language.png" title="ubuntu-language"
+style="width:70.0%" alt="ubuntu-language" /></p>
+<p>Choose you <strong>keyboard layout</strong> (French or English in
+most case)</p>
+<p><br><br />
+<img src="ubuntu-pre-layout.png" title="ubuntu pre layout"
+style="width:70.0%" alt="ubuntu pre layout" /></p>
+<p><br><br />
+<br></p>
+<div class="note">
+<p>You need to get IONIS wifi, there is two options :</p>
+<ol type="1">
+<li><p>You already have your Epitech email and password. You can click
+on <strong><a href="#epitech-wifi">IONIS wifi connection
+page</a></strong>.</p></li>
+<li><p>You don’t have your Epitech email and password. Send via sms
+<strong>getwifi</strong> to <strong>06 44 63 42 42</strong>. You will
+receive temporary login from IONISWIFI. Then you can click on <strong><a
+href="#epitech-wifi">IONIS wifi connection page</a></strong> and use
+those credentials.</p></li>
+</ol>
+<p>Once connected to <strong>IONIS wifi</strong>, you can click on
+<strong>Connect to wifi</strong> or <strong>Do not connect to the
+internet</strong></p>
+</div>
+<p>On the installer update page, click on <strong>skip</strong></p>
+<p><br><br />
+<img src="u24-installer-update2.png" title="installer update"
+style="width:70.0%" alt="installer update" /></p>
+<p><br></p>
+<div class="center">
+<p>Select <strong>Automated installation</strong> and fill the text box
+with the following url :<br />
+<br><br />
+<strong>http://34.155.59.176/autoinstall.yaml</strong></p>
+</div>
+<p><br><br />
+<img src="u24-autoinstall.png" title="autoinstall" style="width:70.0%"
+alt="autoinstall" /></p>
+<div class="tip">
+<p>Sometimes, the installer can crash. Don’t worry ! Close and relaunch
+it, everything will work again<br />
+<br><br />
+<br></p>
+<figure>
+<img src="ubuntu-error.png" title="ubuntu-error" style="width:70.0%"
+alt="ubuntu-error" />
+<figcaption aria-hidden="true">ubuntu-error</figcaption>
+</figure>
+<p><br><br />
+<br></p>
+<div class="center">
+<p>Close the installer and reopen it</p>
+</div>
+<p><br><br />
+<br></p>
+<figure>
+<img src="ubuntu-desktop.png" title="ubuntu-error" style="width:70.0%"
+alt="ubuntu-desktop" />
+<figcaption aria-hidden="true">ubuntu-desktop</figcaption>
+</figure>
+</div>
+<p>Choose you <strong>keyboard layout</strong> (French or English in
+most case)</p>
+<p><br><br />
+<img src="u24-keyboard-post-install.png"
+title="u24-keyboard-post-install" style="width:70.0%"
+alt="u24-keyboard-post-install" /></p>
+<p><br><br />
+<br></p>
+<p>Choose <strong>Install Ubuntu alongside Boot manager</strong></p>
+<p><br><br />
+<img src="u24-install-with-windows.png" title="u24-install-with-windows"
+style="width:70.0%" alt="u24-install-with-windows" /></p>
+<div class="note">
+<p>Call an <strong>APE</strong> before choosing Ubuntu disk space</p>
+</div>
+<p><br><br />
+<img src="u24-choose-partition-size.png"
+title="u24-choose-partition-size" style="width:70.0%"
+alt="u24-choose-partition-size" /></p>
+<p><br><br />
+<br></p>
+<p>Create your <strong>local account for Ubuntu</strong></p>
+<p><br><br />
+<img src="u24-account.png" title="u24-account" style="width:70.0%"
+alt="u24-account" /></p>
+<p>Click on <strong>install</strong> to start installation</p>
+<p><br><br />
+<img src="u24-install-button.png" title="u24-account"
+style="width:70.0%" alt="u24-account" /></p>
+<p><br></p>
+<p>Wait for the install to finish !</p>
+<p><br><br />
+<img src="installation-on-going.png" title="installation-on-going"
+style="width:70.0%" alt="installation-on-going" /></p>
+<p><br><br />
+<br></p>
+<div class="center">
+<p>Once the install is done, <strong>reboot and remove USB
+stick</strong></p>
+</div>
+<h1 id="epitech-tools">4. Epitech tools</h1>
+<p>Now you want to discover and log into the most important tools that
+we use at Epitech</p>
+<h2 id="intranet">Intranet</h2>
+<figure>
+<img src="epitech-logo.png" title="epitech-logo" style="width:10.0%"
+alt="epitech-logo" />
+<figcaption aria-hidden="true">epitech-logo</figcaption>
+</figure>
+<p>Click on <strong><a
+href="https://intra.epitech.eu/">Intranet</a></strong>
+<em>(intra.epitech.eu)</em> in a web browser. Then you can login with
+<strong>Student/staff login</strong> button. You need to use you Epitech
+email and password.</p>
+<h2 id="outlook-office-365">Outlook (Office 365)</h2>
+<ul>
+<li><img src="outlook-logo.png" title="fig:outlook-logo"
+style="width:10.0%" alt="outlook-logo" /></li>
+</ul>
+<p>At Epitech we use Outlook for all emails. It’s very important that
+you check your mail everyday because a lot of important informations
+will be given via mail. Go to <strong><a
+href="https://outlook.office.com/mail/">Outlook</a></strong>
+<em>(outlook.office.com)</em>, you should already be logged in !</p>
+<h2 id="teams">Teams</h2>
+<figure>
+<img src="teams-icon.png" title="teams-icon" style="width:10.0%"
+alt="teams-icon" />
+<figcaption aria-hidden="true">teams-icon</figcaption>
+</figure>
+<p>Teams is a Microsoft application for messaging. If you are not at
+school, it’s your only way (with mail) for contacting an
+<strong>APE</strong>. Teams is already installed on your machine. Launch
+it and login with your Epitech email address and password</p>
+<h2 id="epitech-github-organisation">Epitech Github Organisation</h2>
+<figure>
+<img src="github.png" title="github-logo" style="width:10.0%"
+alt="github-logo" />
+<figcaption aria-hidden="true">github-logo</figcaption>
+</figure>
+<div class="tip">
+<p>If you don’t have a Github account, you first need to create one on
+<strong><a href="https://github.com/signup">create a Github
+account</a></strong> <em>(github.com/signup)</em></p>
+</div>
+<p>You need to join the Epitech Github organisation, click on the
+following link : <strong><a
+href="https://github.com/orgs/EpitechPGE1-2025/sso">Epitech
+Organisation</a></strong>
+<em>(github.com/orgs/EpitechPGE1-2025/sso)</em></p>
+<h1 id="epitech-wifi">Epitech Wifi</h1>
+<p><strong></strong> : IONIS<br />
+<strong></strong> : WPA &amp; WPA2 Entreprise<br />
+<strong></strong> : Protected EAP (PEAP)<br />
+<strong></strong> : Check<br />
+<strong></strong> : Automatic<br />
+<strong></strong> : MSCHAPv2<br />
+<strong></strong> : <em>Epitech email</em><br />
+<strong></strong> : <em>Epitech password</em></p>
+<p><br><br />
+<img src="u24-desktop-settings.png" title="u24-desktop-settings"
+style="width:60.0%" alt="u24-desktop-settings" /></p>
+<p><br></p>
+<div class="center">
+<p>On the <strong>top right corner</strong>, click on the
+<strong>wrench</strong> and go to <strong>Wifi settings</strong></p>
+</div>
+<p><br><br />
+<img src="IONIS-wifi.png" title="IONIS-wifi" style="width:60.0%"
+alt="IONIS-wifi" /></p>
+<p><br></p>
+<div class="center">
+<p>Select <strong>IONIS Wifi</strong> and fill the form with the correct
+informations</p>
+</div>
+<h1 id="enroll-ventoy-secure-boot-key">Enroll Ventoy Secure Boot
+Key</h1>
+<p>If you get this screen, it mean you need to enroll Ventoy secure boot
+key to allow your computer to run Ventoy and secure boot together. So
+the first step is to press enter</p>
+<p><br><br />
+<img src="ventoy-key-violation.png" title="ventoy-key-violation"
+style="width:65.0%" alt="ventoy-key-violation" /></p>
+<p><br><br />
+<br></p>
+<p><strong>Press any to key</strong> to perform MOK management and
+enroll a key</p>
+<p><br><br />
+<img src="ventoy-perform-mok-management.png"
+title="ventoy-perform-mok-management.png" style="width:65.0%"
+alt="ventoy-perform-mok-management" /></p>
+<p><br><br />
+<br></p>
+<p>Select <strong>Eroll key from disk</strong></p>
+<p><br><br />
+<img src="ventoy-enroll-key-from-disk.png"
+title="ventoy-enroll-key-from-disk" style="width:65.0%"
+alt="ventoy-enroll-key-from-disk" /></p>
+<p><br><br />
+<br></p>
+<p>Select the folder <strong>VENTOYEFI</strong></p>
+<p><br><br />
+<img src="ventoy-select-VTOYEFI-dir.png"
+title="ventoy-select-VTOYEFI-dir" style="width:65.0%"
+alt="ventoy-select-VTOYEFI-dir" /></p>
+<p>Select <strong>ENROLL_THIS_KEY_IN_MOKMANAGEMENT.cert</strong></p>
+<p><br><br />
+<img src="ventoy-select-key.png" title="ventoy-select-key"
+style="width:65.0%" alt="ventoy-select-key" /></p>
+<p><br><br />
+<br></p>
+<p>Click on <strong>Continue</strong></p>
+<p><br><br />
+<img src="ventoy-continue-after-key.png"
+title="ventoy-continue-after-key" style="width:65.0%"
+alt="ventoy-continue-after-key" /></p>
+<p>Select <strong>Yes</strong> to enroll the key</p>
+<p><br><br />
+<img src="ventoy-confirm-enroll-key.png"
+title="ventoy-confirm-enroll-key" style="width:65.0%"
+alt="ventoy-confirm-enroll-key" /></p>
+<p><br><br />
+<br></p>
+<p>You can now <strong>Reboot</strong> and continue where you stopped
+!</p>
+<p><br><br />
+<img src="ventoy-reboot.png" title="ventoy-reboot" style="width:65.0%"
+alt="ventoy-reboot" /></p>
+<!-- # Fedora
+
+## Grub configuration
+
+You need to specify the link of the kickstart script, press E key to change boot value
+
+![fedora grub](fedora-grub.png "fedora grub")
+
+After **quiet** insert inst.ks=http://fedora-install.epitest.eu
+
+::: warning 
+Your keyboard is in qwerty at the step
+:::
+
+[fedora grub config with link](fedora-ks.png "grub config with link")
+
+\newpage
+
+## User creation
+
+Click on **User Creation** to create an new user
+
+![fedora installer](fedora-installer.png "fedora installer")
+
+Fill Full name, User name and Password
+
+![fedora user](fedora-user.png "fedora user page")
+
+## Keyboard layout
+
+If you have an azerty keyboard you have nothing to do. But if you have another aloyout such as qwerty, you can change the keyboard layout to match your need -->
+<div class="footer"></div>
+</body>
+</html>
