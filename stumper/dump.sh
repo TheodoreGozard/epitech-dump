@@ -48,7 +48,7 @@ echo -e "${BOLD}${BLUE}━━━━━━━━━━━━━━━━━━━
 echo -e "${BOLD}${BLUE}  📧 Epitech Password${RESET}"
 echo -e "${BOLD}${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
 echo ""
-read -p "Enter Epitech password: " epitech_password
+read -p "Enter your Epitech password: " epitech_password
 
 USERNAME="${epitech_email%@epitech.eu}"
 
