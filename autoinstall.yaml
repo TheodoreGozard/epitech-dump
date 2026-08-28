@@ -1,9 +1,9 @@
 autoinstall:
   version: 1
-  #interactive-sections:
-  #  - storage
-  #  - identity
-  #  - keyboard
+  interactive-sections:
+    - storage
+    - identity
+    - keyboard
   locale: "en_US.UTF-8"
   #refresh-installer:
   #  update: true
