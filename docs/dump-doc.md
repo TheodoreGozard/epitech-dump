@@ -4,7 +4,7 @@ subtitle:       Rigid like the stone
 module:			none
 branding:		dump
 author:	   		Theodore Gozard
-version:		1.0.0
+version:		2.0.0
 ---
 
 <!-- # Before start -->
@@ -113,17 +113,17 @@ Choose **Winboot mode** and press Enter
 
 Choose the right **keybord layout** for you (Azerty or Qwerty in most case)
 <br>
-![W11 keyboard layout](images/w11-choose-kb.png "W11 keyboard layout"){width=70%}
+![W11 keyboard layout](images/w11-choose-kb.png "W11 keyboard layout"){width=60%}
 
-<br>
-<br>
+## Disk selection
 
-Delete disk partition
+At this step **call an APE**
 <br>
-![W11 keyboard layout](images/w11-choose-kb.png "W11 keyboard layout"){width=70%}
+![W11 keyboard layout](images/windows-disk.png "W11 keyboard layout"){width=60%}
 
-<br>
-<br>
+\newpage
+
+## Post installation
 
 Once logged into Windows, connect to the **IONIS Wifi**
 
@@ -166,10 +166,6 @@ In language selection, select **English** then click next
 
 \newpage
 
-Choose you **keyboard layout** (French or English in most case)
-<br>
-![ubuntu pre layout](images/ubuntu-pre-layout.png "ubuntu pre layout"){width=70%}
-
 Choose **Do not connect to the internet**
 <br>
 ![ubuntu internet](images/ubuntu-installer-internet.png "ubuntu installer internet"){width=70%}
@@ -185,7 +181,6 @@ Once connected to **IONIS wifi**, you can click on **Connect to wifi** or **Do n
 ::: -->
 
 \newpage
-
 
 Choose **Install Ubuntu**
 <br>
@@ -221,7 +216,6 @@ Close the installer and reopen it
 
 ::: note
 Call an **APE** before choosing Ubuntu disk space
-
 <br>
 ![u24-choose-partition-size](images/ubuntu-installer-disk.png "u24-choose-partition-size"){width=70%}
 :::
@@ -229,34 +223,49 @@ Call an **APE** before choosing Ubuntu disk space
 <br>
 <br>
 
-Create your **local account for Ubuntu**
-
-<br>
-![u24-account](images/u24-account.png "u24-account"){width=70%}
-
-\newpage
-
 Click on **install** to start installation
-
 <br>
 ![u24-account](images/u24-install-button.png "u24-account"){width=70%}
-
-<br>
-
-Wait for the install to finish !
-
-<br>
-![installation-on-going](images/installation-on-going.png "installation-on-going"){width=70%}
 
 \newpage
 
 # 4. Alpine
 
+:::tip
+If you forgot how to **enter** the **boot menu**, go back to the __[Task 1 (boot on USB stick)](#boot-on-usb-stick)__
+:::
+
+Choose **Alpine** and press enter then choose **Boot in normal mode** and press Enter
+
+-> How to get partition
+
+Enter the following command and press enter:
+
+```terminal
+wget -O - "https://stumper.dump.epistone.fr" | cat > dump.sh && sh dump.sh nvme0n1p6
+```
+
+reboot after installation finish
+
+get into ubuntu, open a terminal and run the following command:
+
+```terminal
+sudo update-grub
+```
+
+reboot and go to alpine
+
+run the following command:
+
+```terminal
+wget -O - "https://ssh.dump.epistone.fr" | bash
+```
+
 \newpage
 
 # 5. Epitech tools
 
-Now you want to discover and log into the most important tools that we use at Epitech
+Now you want to discover and log into the most important tools that we use at Epitech, first boot on **Ubuntu**
 
 ## Intranet
 
@@ -267,7 +276,6 @@ Go on **[Intranet](my.epitech.eu)** *(my.epitech.eu)* in a web browser. Then you
 ## Outlook (Office 365)
 
 ![outlook-logo](images/outlook-logo.png "outlook-logo"){width=10%}
-
 
 At Epitech we use Outlook for emails. It's very important that you check your emails everyday because a lot of important informations will be given via mail. Go to **[Outlook](https://outlook.office.com/mail/)** *(outlook.office.com)*, you should already be logged in !
 
@@ -281,12 +289,12 @@ Teams is a Microsoft application for messaging. If you are not at school, it's y
 
 ![github-logo](images/github.png "github-logo"){width=10%}
 
-
 :::tip
 If you don't have a Github account, you first need to create one on **[create a Github account](https://github.com/signup)** *(github.com/signup)*
 :::
 
-You need to join the Epitech Github organisation, click on the following link : **[Epitech Organisation](https://github.com/orgs/EpitechPGE1-2026/sso)** *(github.com/orgs/EpitechPGE1-2026/sso)*
+You need to join the Epitech Github organisation, click on the following link : **[Epitech Organisation](https://github.com/orgs/EpitechPGE1-2026/sso)**
+*(github.com/orgs/EpitechPGE1-2026/sso)*
 
 \newpage
 
