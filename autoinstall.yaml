@@ -5,9 +5,9 @@ autoinstall:
     - identity
     - keyboard
   locale: "en_US.UTF-8"
-  refresh-installer:
-    update: true
-    channel: latest/edge
+  #refresh-installer:
+  #  update: true
+  #  channel: latest/edge
   keyboard:
     layout: fr
     variant: ""
