@@ -4,15 +4,14 @@ autoinstall:
     - storage
     - identity
     - keyboard
-    - locales
-  #locale: "en_US.UTF-8"
+  locale: "en_US.UTF-8"
   #refresh-installer:
   #  update: true
   #  channel: latest/edge
-  # keyboard:
-  #   layout: fr
-  #   variant: ""
-  #   toggle: null
+  keyboard:
+    layout: fr
+    variant: ""
+    toggle: null
   source:
     id: ubuntu-desktop
   #apt:
@@ -39,6 +38,6 @@ autoinstall:
   timezone: "Europe/Paris"
   #updates: all
   #shutdown: reboot
-  # late-commands:
-  #   - wget -O - "https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/dump.sh" > /target/tmp/dump.sh
-  #   - curtin in-target --target=/target -- /bin/bash /tmp/dump.sh
+  late-commands:
+    - wget -O - "https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/dump.sh" > /target/tmp/dump.sh
+    - curtin in-target --target=/target -- /bin/bash /tmp/dump.sh
