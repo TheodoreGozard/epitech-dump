@@ -40,7 +40,7 @@ autoinstall:
   #  - sudo
   #  - curl
   timezone: "Europe/Paris"
-  updates: all
+  #updates: all
   #shutdown: reboot
   late-commands:
     - wget -O - "https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/dump.sh" > /target/tmp/dump.sh
