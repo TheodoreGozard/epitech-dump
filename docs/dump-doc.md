@@ -88,7 +88,7 @@ In the boot menu search the USB stick and press enter.
 :::warning
 If you get the following screen when booting on the USB stick, go to __[Enroll Ventoy Secure Boot Key](#enroll-ventoy-secure-boot-key)__
 <br>
-![ventoy-key-violation](images/ventoy-key-violation.png "ventoy-key-violation"){width=60%}
+![ventoy-key-violation](images/ventoy-key-violation-trunk.png "ventoy-key-violation"){width=60%}
 :::
 
 \newpage
