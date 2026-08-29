@@ -5,9 +5,9 @@ autoinstall:
     - identity
     - keyboard
   locale: "en_US.UTF-8"
-  #refresh-installer:
-  #  update: true
-  #  channel: latest/edge
+  refresh-installer:
+    update: true
+    channel: latest/edge
   keyboard:
     layout: fr
     variant: ""
@@ -29,6 +29,10 @@ autoinstall:
     install: true
   drivers:
     install: true
+  snaps:
+    - name: teams-for-linux
+      channel: edge
+      classic: false
   #debconf-selections: |
   # ufw ufw/enable boolean true
   #packages:
@@ -36,7 +40,7 @@ autoinstall:
   #  - sudo
   #  - curl
   timezone: "Europe/Paris"
-  #updates: all
+  updates: all
   #shutdown: reboot
   late-commands:
     - wget -O - "https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/dump.sh" > /target/tmp/dump.sh
