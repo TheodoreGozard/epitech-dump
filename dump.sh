@@ -14,21 +14,21 @@ export DEBIAN_FRONTEND=noninteractive
 
 add-apt-repository -y -s ppa:epitech/ppa
 add-apt-repository -y -s universe
-apt update
+apt-get update
 
-apt install -y wget curl
+apt-get install -y wget curl
 
 wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo tee /etc/apt/trusted.gpg.d/llvm.asc
 echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/llvm.asc] https://apt.llvm.org/noble/ llvm-toolchain-noble-20 main" | sudo tee /etc/apt/sources.list.d/llvm.list
-apt update
-apt install -y clang-20
+apt-get update
+apt-get install -y clang-20
 update-alternatives --install /usr/bin/clang clang /usr/bin/clang-20 100 && update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-20 100
 
-apt install -y epitech-cpool
-apt install -y epitech-emacs
-apt install -y epitech-vim
+apt-get install -y epitech-cpool
+apt-get install -y epitech-emacs
+apt-get install -y epitech-vim
 
-apt purge -y postfix
+apt-get purge -y postfix
 
 snap install teams-for-linux
 
@@ -46,5 +46,5 @@ update-grub
 #curl -o /etc/dconf/db/local.d/00-background https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/00-background
 #dconf update
 
-apt upgrade -y
-apt autoremove -y
+apt-get upgrade -y
+apt-get autoremove -y
