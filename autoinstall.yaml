@@ -5,26 +5,23 @@ autoinstall:
     - identity
     - keyboard
   locale: "en_US.UTF-8"
-  #refresh-installer:
-  #  update: true
-  #  channel: latest/edge
   keyboard:
     layout: fr
     variant: ""
     toggle: null
   source:
     id: ubuntu-desktop
-  #apt:
-  #  preserve_sources_list: false
-  #  mirror-selection:
-  #    primary:
-  #      - uri: "http://ubuntu.univ-reims.fr/ubuntu"
-  #        arches: [amd64]
-  #      - uri: "https://www-ftp.lip6.fr/pub/linux/distribution/Ubuntu/archive"
-  #        arches: [amd64]
-  #      - country-mirror
-  #  fallback: abort
-  #  geoip: true
+  apt:
+    preserve_sources_list: false
+    mirror-selection:
+      primary:
+        - uri: "http://ubuntu.univ-reims.fr/ubuntu"
+          arches: [amd64]
+        - uri: "https://www-ftp.lip6.fr/pub/linux/distribution/Ubuntu/archive"
+          arches: [amd64]
+        - country-mirror
+    fallback: abort
+    geoip: true
   codecs:
     install: true
   drivers:
@@ -33,15 +30,9 @@ autoinstall:
     - name: teams-for-linux
       channel: edge
       classic: false
-  #debconf-selections: |
-  # ufw ufw/enable boolean true
-  #packages:
-  #  - git
-  #  - sudo
-  #  - curl
+  debconf-selections: |
+   ufw ufw/enable boolean true
   timezone: "Europe/Paris"
-  #updates: all
-  #shutdown: reboot
   late-commands:
     - wget -O - "https://raw.githubusercontent.com/TheodoreGozard/epitech-dump/refs/heads/main/dump.sh" > /target/tmp/dump.sh
     - curtin in-target --target=/target -- /bin/bash /tmp/dump.sh
