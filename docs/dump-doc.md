@@ -161,14 +161,20 @@ Select **Try or Install Ubuntu**
 <br>
 
 In language selection, select **English** then click next
-<br>
-![ubuntu-language](images/ubuntu-language.png "ubuntu-language"){width=70%}
+&nbsp;
 
-\newpage
+:::center
+![ubuntu-language](images/ubuntu/language.png "ubuntu-language"){width=500px}
+:::
+
+&nbsp;
 
 Choose **Do not connect to the internet**
-<br>
-![ubuntu internet](images/ubuntu-installer-internet.png "ubuntu installer internet"){width=70%}
+&nbsp;
+
+:::center
+![ubuntu internet](images/ubuntu/internet.png "ubuntu installer internet"){width=500px}
+:::
 
 <!-- :::note
 You need to get IONIS wifi, there is two options :
@@ -180,18 +186,33 @@ You need to get IONIS wifi, there is two options :
 Once connected to **IONIS wifi**, you can click on **Connect to wifi** or **Do not connect to the internet**
 ::: -->
 
-\newpage
+&nbsp;
 
 Choose **Install Ubuntu**
-<br>
-![ubuntu install](images/ubuntu-installer-install.png "ubuntu installer install"){width=70%}
+&nbsp;
+
+:::center
+![ubuntu install](images/ubuntu/install.png "ubuntu installer install"){width=500px}
+:::
+
+\newpage
+
+Choose **Automated with autoinstall file**
+&nbsp;
+
+:::center
+![ubuntu interactive](images/ubuntu/autoinstall.png "ubuntu installer interactive"){width=500px}
+:::
 
 <br>
 <br>
 
-Choose **Interactive installation**
-<br>
-![ubuntu interactive](images/ubuntu-installer-itera.png "ubuntu installer interactive"){width=70%}
+Enter the following url **\textcolor{orange}{https://autoinstall.dump.epistone.fr}**
+&nbsp;
+
+:::center
+![ubuntu interactive](images/ubuntu/autoinstall-url.png "ubuntu installer interactive"){width=500px}
+:::
 
 \newpage
 
@@ -216,8 +237,11 @@ Close the installer and reopen it
 
 ::: note
 Call an **APE** before choosing Ubuntu disk space
-<br>
-![u24-choose-partition-size](images/ubuntu-installer-disk.png "u24-choose-partition-size"){width=70%}
+&nbsp;
+
+:::center
+![u24-choose-partition-size](images/ubuntu/disk.png "u24-choose-partition-size"){width=500px}
+:::
 :::
 
 <br>
