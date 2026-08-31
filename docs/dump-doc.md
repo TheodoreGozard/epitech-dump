@@ -599,7 +599,7 @@ Select **Yes** to enroll the key
 You can now **Reboot** and continue where you stopped !
 
 <br> -->
-![ventoy-reboot](images/ventoy/ventoy-reboot.png "ventoy-reboot"){width=65%}
+<!-- ![ventoy-reboot](images/ventoy/ventoy-reboot.png "ventoy-reboot"){width=65%} -->
 
 <!-- :::note
 You need to get IONIS wifi, there is two options :
