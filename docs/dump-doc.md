@@ -506,8 +506,10 @@ Teams is a Microsoft application for messaging. If you are not at school, it's y
 If you don't have a GitHub account, create one first on **[create a Github account](https://github.com/signup)** *(github.com/signup)*
 :::
 
-You need to join the Epitech Github organisation, click on the following link : **[Epitech Organisation](https://github.com/orgs/EpitechPGE1-2026/sso)**
-*(github.com/orgs/EpitechPGE1-2026/sso)*
+You need to join the Epitech Github organisation, click on the following link :
+
+**[Epitech PGE Organisation](https://github.com/orgs/EpitechPGE1-2026/sso)** *(github.com/orgs/EpitechPGE1-2026/sso)*
+**[Epitech Bachelor Organisation](https://github.com/orgs/EpitechBachelorPromo2029/sso)** *(github.com/orgs/EpitechBachelorPromo2029/sso)*
 
 \newpage
 
