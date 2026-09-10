@@ -1,7 +1,8 @@
 #!/bin/sh
-set -e
+#set -e
 
 mkdir -p /home/$USER/.ssh
+rm -rf /home/$USER/.ssh/id_ed25519*
 ssh-keygen -t ed25519 -b 4096 -f /home/$USER/.ssh/id_ed25519 -N "" -C "$USER@github"
 
 gh auth login -p "ssh" -s "admin:public_key" --skip-ssh-key --web
