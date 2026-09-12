@@ -13,7 +13,7 @@ PACKAGES_LIST="
   build-base
   epiclang
   banana-coding-style-checker
-  emacs
+  emacs-nox
   vim
   bash
   git
